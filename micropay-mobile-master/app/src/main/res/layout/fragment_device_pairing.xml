@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:fillViewport="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.micropay.micropay.LoginActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="100dp">
+
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="134dp"
+                android:layout_height="45dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/ic_micropay_logo" />
+
+            <TextView
+                android:id="@+id/welcome_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_horizontal"
+                android:text="@string/micropay_agent"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/phone_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:paddingTop="50dp"
+                android:text="Activation code is required"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/activationCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/standard_100"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="@dimen/standard_100"
+                android:background="@drawable/bottom_bar_white"
+                android:gravity="center_horizontal"
+                android:hint="Activation Code"
+                android:inputType="numberPassword"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:textCursorDrawable="@null" />
+
+            <Button
+                android:id="@+id/proceed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:background="@color/buttonColors"
+                android:imeOptions="actionDone|actionSend"
+                android:text="Login"
+                android:textColor="@color/card_white" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/device_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:fontFamily="@font/roboto"
+            android:text="Device ID"
+            android:textColor="@android:color/white"
+            android:textStyle="italic" />
+
+    </RelativeLayout>
+
+
+</androidx.core.widget.NestedScrollView>

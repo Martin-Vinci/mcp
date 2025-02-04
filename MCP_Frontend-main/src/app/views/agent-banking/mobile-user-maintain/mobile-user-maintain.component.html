@@ -1,0 +1,108 @@
+<p-panel header="Maintain Mobile User">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="col-sm-6">
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Customer Name</mat-label>
+                            <input matInput autocomplete="off" formControlName="customerName">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Phone Number:</mat-label>
+                            <input matInput autocomplete="off" formControlName="phoneNumber">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Entity Type:</mat-label>
+                            <input matInput autocomplete="off" readonly formControlName="acctType">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>IMEI #</mat-label>
+                            <input matInput autocomplete="off" readonly formControlName="authImei">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>IMSI</mat-label>
+                            <input matInput autocomplete="off" readonly formControlName="authImsi">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-4">
+                        <mat-checkbox color="primary" class="mat-checkbox" formControlName="lockedFlag">
+                            Locked:</mat-checkbox>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-checkbox color="primary" class="mat-checkbox" formControlName="useUssdChannel">
+                            Enable USSD:</mat-checkbox>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-checkbox color="primary" class="mat-checkbox" formControlName="useAndroidChannel">
+                            Enable App:</mat-checkbox>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 text-right">
+                        <button [disabled]="loading[0]" *ngIf="!isView" class="btn btn-primary btn-sm mr-1 mb-1"
+                            style="width: 90px;" (click)="onSubmit()">
+                            <span *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+                            <i class="fa fa-check  "></i> Save
+                        </button>
+                        <button [disabled]="loading[2]" *ngIf="!isView" class="btn btn-primary btn-sm mr-1 mb-1"
+                            (click)="onPinReset()">
+                            <span *ngIf="loading[2]" class="spinner-border spinner-border-sm mr-1"></span>
+                            <i class="fa fa-check  "></i> Reset Pin
+                        </button>
+                        <button class="btn btn-danger btn-sm mr-1 mb-1" style="width: 90px;" type="button"  type="button" (click)="onClose()">
+                            <i class="fa fa-times  "></i> Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">            
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        <p-table [value]="data" styleClass="p-datatable-sm mt-1 mb-2 ml-2 mr-2 prime-ng-table" responsiveLayout="scroll" [responsive]="true"
+                            selectionMode="single" [(selection)]="selectedAccount" dataKey="id" [loading]="loading[1]"
+                            responsiveLayout="scroll">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>Account #</th>
+                                    <th>Account Name</th>
+                                    <th>Type</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-selectedAccount>
+                                <tr [pSelectableRow]="selectedAccount">
+                                    <td>{{selectedAccount.acctNo}}</td>
+                                    <td>{{selectedAccount.description}}</td>                           
+                                    <td>{{selectedAccount.acctType}}</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-md-12 text-right">
+                        <button *ngIf="isEdit" type="button" class="btn btn-success btn-sm mr-2 mb-1" (click)="openAccountWindow('CUSTOMER')">
+                            <i class="fa fa-check  "></i> Add Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</p-panel>

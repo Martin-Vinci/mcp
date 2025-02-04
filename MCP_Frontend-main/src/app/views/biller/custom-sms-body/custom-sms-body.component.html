@@ -1,0 +1,40 @@
+<p-panel header="Biller Details">
+  <div class="col-sm-8">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row form-group">
+            <div class="col-sm-12">
+                <label>Customer Transaction Completed:</label>
+                <textarea class="form-control" rows="3" cols="20"></textarea>
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <div class="col-sm-12">
+                <label>Customer Transaction Notified:</label>
+                <textarea class="form-control" rows="3" cols="20"></textarea>
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <div class="col-sm-12" >
+                <label>Retailer Transaction Completed:</label>
+                <textarea class="form-control" rows="3" cols="20"></textarea>
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <div class="col-sm-12">
+                <label>Retailer Transaction Notified:</label>
+                <textarea class="form-control" rows="3" cols="20"></textarea>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 text-right">
+                <button class="btn btn-primary btn-sm mr-1 mb-1" style="width: 90px;" (click)="onSubmit()">
+                    <i class="fa fa-check  "></i> Save
+                </button>
+                <button class="btn btn-danger btn-sm mr-1 mb-1" style="width: 90px;"  type="button" (click)="onClose()">
+                    <i class="fa fa-times  "></i> Close
+                </button>
+            </div>
+        </div>
+    </form>
+  </div>
+</p-panel>

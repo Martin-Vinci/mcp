@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://PegPayPaymentsApi/" xmlns:s1="http://datacontracts.multichoice.co.za/SelfCare" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://PegPayPaymentsApi/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://PegPayPaymentsApi/">
+      <s:import namespace="http://datacontracts.multichoice.co.za/SelfCare" />
+      <s:element name="GetServerStatus">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServerStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServerStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTransactionDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="tns:QueryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="QueryRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="QueryField1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryField2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryField3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryField4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryField5" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryField6" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryField7" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryField8" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryField9" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryField10" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTransactionDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTransactionDetailsResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Response">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Transations" type="tns:ArrayOfResponse" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField5" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField6" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField7" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField8" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField9" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField10" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField11" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField12" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField13" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField14" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField15" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField16" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField17" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField18" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField19" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField20" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField21" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField22" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField23" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField24" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField25" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField26" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseField27" type="tns:ArrayOfAvailableProduct" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Response" nillable="true" type="tns:Response" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAvailableProduct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AvailableProduct" nillable="true" type="s1:AvailableProduct" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QuerySchoolDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="tns:QueryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuerySchoolDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QuerySchoolDetailsResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAvailableProducts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="tns:QueryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAvailableProductsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAvailableProductsResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryCustomerDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="tns:QueryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryCustomerDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryCustomerDetailsResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostSchoolsTransaction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="trans" type="tns:TransactionRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TransactionRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PostField1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField5" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField6" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField7" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField8" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField9" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField10" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField11" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField12" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField13" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField14" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField15" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField16" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField17" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField18" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField19" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField20" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField21" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField22" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField23" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField24" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField25" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField26" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField27" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField28" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField29" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField30" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField31" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField32" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField33" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostField34" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PostSchoolsTransactionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostSchoolsTransactionResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostTransaction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="trans" type="tns:TransactionRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostTransactionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostTransactionResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPayTVBouquetDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="tns:QueryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPayTVBouquetDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPayTVBouquetDetailsResult" type="tns:ArrayOfBouquetDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBouquetDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BouquetDetails" nillable="true" type="tns:BouquetDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BouquetDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BouquetCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BouquetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BouquetPrice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BouquetDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayTvCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetBundleBouquetDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="tns:QueryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBundleBouquetDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBundleBouquetDetailsResult" type="tns:ArrayOfBouquetDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReactivatePayTvCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="tns:QueryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReactivatePayTvCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReactivatePayTvCardResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryLastFiveDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="tns:QueryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryLastFiveDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryLastFiveDetailsResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadEndOfDayReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lstOfTrans" type="tns:ArrayOfEODTransaction" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEODTransaction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EODTransaction" nillable="true" type="tns:EODTransaction" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EODTransaction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="VendorTranId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateTime" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UploadEndOfDayReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadEndOfDayReportResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShowLastREAToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="meterRef" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShowLastREATokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ShowLastREATokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PrepaidVendorPostTransaction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="trans" type="tns:TransactionRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PrepaidVendorPostTransactionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PrepaidVendorPostTransactionResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReversePrepaidTransaction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="trans" type="tns:TransactionRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReversePrepaidTransactionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReversePrepaidTransactionResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://datacontracts.multichoice.co.za/SelfCare">
+      <s:complexType name="AvailableProduct">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="currency" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="defaultCuurencyCode" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="defaultcurrencyproductPrice" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="hasCustomer" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="productCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="productDesc" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="productPrice" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetServerStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetServerStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTransactionDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTransactionDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QuerySchoolDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:QuerySchoolDetails" />
+  </wsdl:message>
+  <wsdl:message name="QuerySchoolDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:QuerySchoolDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableProductsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAvailableProducts" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableProductsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAvailableProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryCustomerDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryCustomerDetails" />
+  </wsdl:message>
+  <wsdl:message name="QueryCustomerDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryCustomerDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostSchoolsTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:PostSchoolsTransaction" />
+  </wsdl:message>
+  <wsdl:message name="PostSchoolsTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:PostSchoolsTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:PostTransaction" />
+  </wsdl:message>
+  <wsdl:message name="PostTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:PostTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPayTVBouquetDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPayTVBouquetDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetPayTVBouquetDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPayTVBouquetDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBundleBouquetDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBundleBouquetDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetBundleBouquetDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBundleBouquetDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReactivatePayTvCardSoapIn">
+    <wsdl:part name="parameters" element="tns:ReactivatePayTvCard" />
+  </wsdl:message>
+  <wsdl:message name="ReactivatePayTvCardSoapOut">
+    <wsdl:part name="parameters" element="tns:ReactivatePayTvCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryLastFiveDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryLastFiveDetails" />
+  </wsdl:message>
+  <wsdl:message name="QueryLastFiveDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryLastFiveDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadEndOfDayReportSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadEndOfDayReport" />
+  </wsdl:message>
+  <wsdl:message name="UploadEndOfDayReportSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadEndOfDayReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShowLastREATokenSoapIn">
+    <wsdl:part name="parameters" element="tns:ShowLastREAToken" />
+  </wsdl:message>
+  <wsdl:message name="ShowLastREATokenSoapOut">
+    <wsdl:part name="parameters" element="tns:ShowLastREATokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="PrepaidVendorPostTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:PrepaidVendorPostTransaction" />
+  </wsdl:message>
+  <wsdl:message name="PrepaidVendorPostTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:PrepaidVendorPostTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReversePrepaidTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:ReversePrepaidTransaction" />
+  </wsdl:message>
+  <wsdl:message name="ReversePrepaidTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:ReversePrepaidTransactionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PegPaySoap">
+    <wsdl:operation name="GetServerStatus">
+      <wsdl:input message="tns:GetServerStatusSoapIn" />
+      <wsdl:output message="tns:GetServerStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionDetails">
+      <wsdl:input message="tns:GetTransactionDetailsSoapIn" />
+      <wsdl:output message="tns:GetTransactionDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QuerySchoolDetails">
+      <wsdl:input message="tns:QuerySchoolDetailsSoapIn" />
+      <wsdl:output message="tns:QuerySchoolDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableProducts">
+      <wsdl:input message="tns:GetAvailableProductsSoapIn" />
+      <wsdl:output message="tns:GetAvailableProductsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryCustomerDetails">
+      <wsdl:input message="tns:QueryCustomerDetailsSoapIn" />
+      <wsdl:output message="tns:QueryCustomerDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostSchoolsTransaction">
+      <wsdl:input message="tns:PostSchoolsTransactionSoapIn" />
+      <wsdl:output message="tns:PostSchoolsTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostTransaction">
+      <wsdl:input message="tns:PostTransactionSoapIn" />
+      <wsdl:output message="tns:PostTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPayTVBouquetDetails">
+      <wsdl:input message="tns:GetPayTVBouquetDetailsSoapIn" />
+      <wsdl:output message="tns:GetPayTVBouquetDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBundleBouquetDetails">
+      <wsdl:input message="tns:GetBundleBouquetDetailsSoapIn" />
+      <wsdl:output message="tns:GetBundleBouquetDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReactivatePayTvCard">
+      <wsdl:input message="tns:ReactivatePayTvCardSoapIn" />
+      <wsdl:output message="tns:ReactivatePayTvCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryLastFiveDetails">
+      <wsdl:input message="tns:QueryLastFiveDetailsSoapIn" />
+      <wsdl:output message="tns:QueryLastFiveDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadEndOfDayReport">
+      <wsdl:input message="tns:UploadEndOfDayReportSoapIn" />
+      <wsdl:output message="tns:UploadEndOfDayReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowLastREAToken">
+      <wsdl:input message="tns:ShowLastREATokenSoapIn" />
+      <wsdl:output message="tns:ShowLastREATokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PrepaidVendorPostTransaction">
+      <wsdl:input message="tns:PrepaidVendorPostTransactionSoapIn" />
+      <wsdl:output message="tns:PrepaidVendorPostTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReversePrepaidTransaction">
+      <wsdl:input message="tns:ReversePrepaidTransactionSoapIn" />
+      <wsdl:output message="tns:ReversePrepaidTransactionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PegPaySoap" type="tns:PegPaySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServerStatus">
+      <soap:operation soapAction="http://PegPayPaymentsApi/GetServerStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionDetails">
+      <soap:operation soapAction="http://PegPayPaymentsApi/GetTransactionDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySchoolDetails">
+      <soap:operation soapAction="http://PegPayPaymentsApi/QuerySchoolDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableProducts">
+      <soap:operation soapAction="http://PegPayPaymentsApi/GetAvailableProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCustomerDetails">
+      <soap:operation soapAction="http://PegPayPaymentsApi/QueryCustomerDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostSchoolsTransaction">
+      <soap:operation soapAction="http://PegPayPaymentsApi/PostSchoolsTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostTransaction">
+      <soap:operation soapAction="http://PegPayPaymentsApi/PostTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPayTVBouquetDetails">
+      <soap:operation soapAction="http://PegPayPaymentsApi/GetPayTVBouquetDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBundleBouquetDetails">
+      <soap:operation soapAction="http://PegPayPaymentsApi/GetBundleBouquetDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReactivatePayTvCard">
+      <soap:operation soapAction="http://PegPayPaymentsApi/ReactivatePayTvCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryLastFiveDetails">
+      <soap:operation soapAction="http://PegPayPaymentsApi/QueryLastFiveDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadEndOfDayReport">
+      <soap:operation soapAction="http://PegPayPaymentsApi/UploadEndOfDayReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowLastREAToken">
+      <soap:operation soapAction="http://PegPayPaymentsApi/ShowLastREAToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrepaidVendorPostTransaction">
+      <soap:operation soapAction="http://PegPayPaymentsApi/PrepaidVendorPostTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReversePrepaidTransaction">
+      <soap:operation soapAction="http://PegPayPaymentsApi/ReversePrepaidTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PegPaySoap12" type="tns:PegPaySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServerStatus">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/GetServerStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionDetails">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/GetTransactionDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySchoolDetails">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/QuerySchoolDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableProducts">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/GetAvailableProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCustomerDetails">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/QueryCustomerDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostSchoolsTransaction">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/PostSchoolsTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostTransaction">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/PostTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPayTVBouquetDetails">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/GetPayTVBouquetDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBundleBouquetDetails">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/GetBundleBouquetDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReactivatePayTvCard">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/ReactivatePayTvCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryLastFiveDetails">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/QueryLastFiveDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadEndOfDayReport">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/UploadEndOfDayReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowLastREAToken">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/ShowLastREAToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrepaidVendorPostTransaction">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/PrepaidVendorPostTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReversePrepaidTransaction">
+      <soap12:operation soapAction="http://PegPayPaymentsApi/ReversePrepaidTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PegPay">
+    <wsdl:port name="PegPaySoap" binding="tns:PegPaySoap">
+      <soap:address location="https://test.pegasus.co.ug:8019/TestPegPayApi/PegPay.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PegPaySoap12" binding="tns:PegPaySoap12">
+      <soap12:address location="https://test.pegasus.co.ug:8019/TestPegPayApi/PegPay.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

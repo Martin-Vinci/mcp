@@ -1,0 +1,211 @@
+<p-panel header="EFRIS-Supplier Payment">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="col-sm-5">
+                <p-divider><strong>Supplier details</strong></p-divider>
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        <mat-radio-group class="mat-radio-group" formControlName="buyerType">
+                            <mat-radio-button class="mat-radio-button" value="0">Business/Government</mat-radio-button>
+                            <mat-radio-button class="mat-radio-button" value="1">Consumer</mat-radio-button>
+                            <mat-radio-button class="mat-radio-button" value="2">Foreigner</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-sm-7">
+                        <label>Is the seller a non-resident?</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <mat-radio-group class="mat-radio-group" formControlName="buyerCitizenship">
+                            <mat-radio-button class="mat-radio-button" value="1">Yes</mat-radio-button>
+                            <mat-radio-button class="mat-radio-button" value="0">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>NIN/BRN:</mat-label>
+                            <input matInput autocomplete="off" formControlName="buyerNinBrn">
+                            <button mat-button matSuffix class="btn-sm" color="primary" type="button"
+                                (click)="queryTaxPayerInformation()">
+                                <span *ngIf="loading[2]" class="spinner-border spinner-border-sm mr-1"></span>
+                                <mat-icon *ngIf="!loading[2]">search</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>TIN:</mat-label>
+                            <input matInput autocomplete="off" formControlName="buyerTin">                 
+                            <button mat-button matSuffix class="btn-sm" color="primary" type="button"
+                                (click)="queryTaxPayerInformation()">
+                                <span *ngIf="loading[2]" class="spinner-border spinner-border-sm mr-1"></span>
+                                <mat-icon *ngIf="!loading[2]">search</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Legal Name:</mat-label>
+                            <input matInput readonly autocomplete="off" formControlName="buyerLegalName">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Business Name:</mat-label>
+                            <input matInput readonly autocomplete="off" formControlName="buyerBusinessName">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email Address:</mat-label>
+                            <input matInput readonly autocomplete="off" formControlName="buyerEmail">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Contact Number:</mat-label>
+                            <input matInput readonly autocomplete="off" formControlName="buyerMobilePhone">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Address</mat-label>
+                            <input matInput readonly autocomplete="off" formControlName="buyerAddress">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <p-divider layout="vertical"></p-divider>
+            <div class="col-sm-6">
+                <p-divider><strong>Goods and Services</strong></p-divider>
+                <div class="form-group form-row">
+                    <div class="col-sm-12">
+                        <p-table [value]="goodDetails" styleClass="p-datatable-sm mt-1 mb-2 ml-0 mr-0 prime-ng-table"
+                            responsiveLayout="scroll" [responsive]="true" selectionMode="single"
+                            [(selection)]="selectedGood" dataKey="itemCode" [loading]="loading[1]"
+                            responsiveLayout="scroll">
+                            <ng-template pTemplate="header">
+                                <tr style="font-size: 12px;">
+                                    <th>Item</th>
+                                    <th>Unit of measure</th>
+                                    <th>Unit Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Tax Rate</th>
+                                    <th>Tax</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-selectedGood>
+                                <tr [pSelectableRow]="selectedGood">
+                                    <td>{{selectedGood.item}}</td>
+                                    <td>{{selectedGood.unitOfMeasure}}</td>
+                                    <td>{{selectedGood.unitPrice}}</td>
+                                    <td>{{selectedGood.qty}}</td>
+                                    <td>{{selectedGood.total}}</td>
+                                    <td>{{selectedGood.taxRate}}</td>
+                                    <td>{{selectedGood.tax}}</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    <div class="col-md-12 text-right">
+                        <button type="button" class="btn btn-success btn-sm mr-2 mb-1"
+                            (click)="openGoodsAndServicesWindow()">
+                            <i class="fa fa-plus  "></i>
+                        </button>
+                    </div>
+                </div>
+                <p-divider><strong>Tax details</strong></p-divider>
+                <div class="form-group form-row">
+                    <div class="col-sm-12">
+                        <p-table [value]="taxDetails" styleClass="p-datatable-sm mt-1 mb-2 ml-0 mr-0 prime-ng-table"
+                            responsiveLayout="scroll" [responsive]="true" selectionMode="single"
+                            [(selection)]="selectedTax" dataKey="itemCode" [loading]="loading[1]"
+                            responsiveLayout="scroll">
+                            <ng-template pTemplate="header">
+                                <tr style="font-size: 12px;">
+                                    <!-- <th>Tax category</th> -->
+                                    <th>Net amount</th>
+                                    <th>Tax rate</th>
+                                    <th>Tax amount</th>
+                                    <th>Gross amount</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-selectedTax>
+                                <tr [pSelectableRow]="selectedTax">
+                                    <!-- <td>{{selectedTax.item}}</td> -->
+                                    <td>{{selectedTax.netAmount}}</td>
+                                    <td>{{selectedTax.taxRate}}</td>
+                                    <td>{{selectedTax.taxAmount}}</td>
+                                    <td>{{selectedTax.grossAmount}}</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+                <p-divider><strong>Summary</strong></p-divider>
+                <div class="form-group form-row">
+                    <div class="col-12">
+                        <div class="form-row">
+                            <div class="col-3">
+                                <label class="lb-sm">Net Amount:</label>
+                            </div>
+                            <div class="col-4">
+                                <label class="lb-sm"
+                                    style="color: blue;"><span>{{this.invoiceSummary.netAmount}}</span></label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-3">
+                                <label class="lb-sm">Tax Amount:</label>
+                            </div>
+                            <div class="col-4">
+                                <label class="lb-sm" style="color: blue;"><span>{{this.invoiceSummary.taxAmount}}</span></label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-3">
+                                <label class="lb-sm">Gross Amount:</label>
+                            </div>
+                            <div class="col-4">
+                                <label class="lb-sm" style="color: blue;"><span>{{this.invoiceSummary.grossAmount}}</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-sm-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Remarks:</mat-label>
+                            <input matInput autocomplete="off" (keyup)="onRemarksChanged()" formControlName="remarks">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 text-right">
+                        <button [disabled]="loading[0]" *ngIf="!isView" class="btn btn-primary btn-sm mr-1 mb-1"
+                            (click)="onSubmit()">
+                            <span *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+                            <i class="fa fa-check  "></i> Generate Invoice
+                        </button>
+                        <button class="btn btn-danger btn-sm mr-1 mb-1" type="button" style="width: 90px;" type="button"
+                            (click)="onClose()">
+                            <i class="fa fa-times  "></i> Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</p-panel>

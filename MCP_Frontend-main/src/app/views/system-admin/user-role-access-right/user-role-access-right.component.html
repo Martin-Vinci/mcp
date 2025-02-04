@@ -1,0 +1,133 @@
+<section class="users-edit">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <form [formGroup]="form">
+                    <h4 class="mb-3">USER ROLE ACCESS RIGHTS</h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <section id="content-types">
+                                <div class="row match-height">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-12 mb-1">
+                                                <p class="content-sub-header mb-1">Available Access Rights.</p>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <p-table #dt [value]="unAssignedAccess" [rows]="40"
+                                                [paginator]="true"
+                                                [globalFilterFields]="['name','country.name','representative.name','status']"
+                                                [(selection)]="selectedUnAssignedAccess" [rowHover]="true"
+                                                dataKey="menuId" [showCurrentPageReport]="true">
+                                                <ng-template pTemplate="caption">
+                                                    <div class="p-d-flex p-ai-center p-jc-between">
+                                                        <span class="p-input-icon-left">
+                                                            <i class="pi pi-search"></i>
+                                                            <input pInputText type="text"
+                                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                                placeholder="Search..." />
+                                                        </span>
+                                                    </div>
+                                                </ng-template>
+                                                <ng-template pTemplate="header">
+                                                    <tr style="font-size: 13px;">
+                                                        <th pSortableColumn="description">Description</th>
+                                                        <th style="width: 3rem">
+                                                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                                        </th>
+                                                    </tr>
+                                                </ng-template>
+                                                <ng-template pTemplate="body" let-product>
+                                                    <tr style="font-size: 13px;">
+                                                        <td>{{product.description}}</td>
+                                                        <td>
+                                                            <p-tableCheckbox [value]="product"></p-tableCheckbox>
+                                                        </td>
+                                                    </tr>
+                                                </ng-template>
+                                            </p-table>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1 text-center" style="margin-top: auto; margin-bottom: auto;">
+                                        <br>
+                                        <div class="form-row">
+                                            <div class="col-sm-12">
+                                                <button type="button" (click)="assignOperationService()"
+                                                    class="btn btn-sm btn-info mb-1">
+                                                    <i class="fa fa-forward" *ngIf="!loading[1]" aria-hidden="true"></i>
+                                                    <span style="color: blue;" *ngIf="loading[1]"
+                                                        class="spinner-border spinner-border-sm mr-1"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-sm-12">
+                                                <button type="button" (click)="revokeOperationService()"
+                                                    class="btn btn-sm btn-info mb-1">
+                                                    <i class="fa fa-backward" *ngIf="!loading[2]"
+                                                        aria-hidden="true"></i>
+                                                    <span style="color: blue;" *ngIf="loading[2]"
+                                                        class="spinner-border spinner-border-sm mr-1"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-12 mb-1">
+                                                <p class="content-sub-header mb-1">Assigned  Access Rights.</p>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <p-table #dt [value]="assignedOperationService" [rows]="40"
+                                                [paginator]="true"
+                                                [globalFilterFields]="['name','country.name','representative.name','status']"
+                                                [(selection)]="selectedAssignedService" [rowHover]="true"
+                                                dataKey="menuId" [showCurrentPageReport]="true">
+                                                <ng-template pTemplate="caption">
+                                                    <div class="p-d-flex p-ai-center p-jc-between">
+                                                        <span class="p-input-icon-left">
+                                                            <i class="pi pi-search"></i>
+                                                            <input pInputText type="text"
+                                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                                placeholder="Search..." />
+                                                        </span>
+                                                    </div>
+                                                </ng-template>
+                                                <ng-template pTemplate="header">
+                                                    <tr style="font-size: 13px;">
+                                                        <th style="width: 3rem">
+                                                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                                        </th>
+                                                        <th pSortableColumn="description">Description</th>
+                                                    </tr>
+                                                </ng-template>
+                                                <ng-template pTemplate="body" let-product>
+                                                    <tr style="font-size: 13px;">
+                                                        <td>
+                                                            <p-tableCheckbox [value]="product"></p-tableCheckbox>
+                                                        </td>
+                                                        <td>{{product.description}}</td>
+                                                    </tr>
+                                                </ng-template>
+                                            </p-table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col-12 d-flex justify-content-end flex-sm-row flex-column mt-0 mt-sm-0">
+                                        <button type="button" class="btn btn-sm btn-danger mr-0 mb-1"
+                                            (click)="onClose()">
+                                            <i class='fa fa-close'></i>
+                                            Close</button>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,39 @@
+<p-panel header="Maintain Parameter">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="col-sm-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Parameter code:</mat-label>
+                    <input matInput autocomplete="off" [readonly]="!isAddMode" formControlName="paramCode">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <input matInput autocomplete="off" [readonly]="!isAddMode"  formControlName="paramDescr">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Parameter value:</mat-label>
+                    <input matInput autocomplete="off" formControlName="paramValue">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 text-right">
+                <button [disabled]="loading[0]" *ngIf="!isView" class="btn btn-primary btn-sm mr-1 mb-1" style="width: 90px;" (click)="onSubmit()">
+                    <span *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+                    <i class="fa fa-check  "></i> Save
+                </button>
+                <button class="btn btn-danger btn-sm mr-1 mb-1" type="button" style="width: 90px;"  type="button" (click)="onClose()">
+                    <i class="fa fa-times  "></i> Close
+                </button>
+            </div>
+        </div>
+    </form>
+</p-panel>

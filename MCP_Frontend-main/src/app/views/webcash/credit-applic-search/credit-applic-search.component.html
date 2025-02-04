@@ -1,0 +1,51 @@
+<p-panel header="Credit Applications">
+    <div class="form-row form-group">
+        <div class="col-md-12 text-right">
+            <button class="btn btn-warning btn-sm mr-1 mb-1 " (click)="onView()">
+                <i class="fa fa-eye"></i> View
+            </button>
+            <button class="btn btn-success btn-sm mr-1 mb-1 " (click)="onEdit()">
+                <i class="fa fa-pencil"></i> Edit
+            </button>
+            <button class="btn btn-primary btn-sm mr-1 mb-1 " (click)="onAdd()">
+                <i class="fa fa-plus"></i> Add
+            </button>
+            <button class="btn btn-danger btn-sm mr-1 mb-1 " routerLink="/dashboard/analytics">
+                <i class="fa fa-times  "></i> Close
+            </button>
+        </div>
+    </div>
+    <div class="form-row form-group">
+        <div class="col-12">
+            <p-table [value]="data" [paginator]="true" [rows]="50"
+                styleClass="p-datatable-sm mt-1 prime-ng-table" responsiveLayout="scroll"
+                [responsive]="true" selectionMode="single" [(selection)]="selectedData" dataKey="id"
+                [loading]="loading[0]" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr style="font-size: 12px;">
+                        <th>ID #</th>
+                        <th>Customer Name</th>
+                        <th>Credit Type</th>
+                        <th>Amount</th>
+                        <th>Term</th>
+                        <th>Period</th>
+                        <th>Status</th>
+                        <th>Create Date</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-selectedData>
+                    <tr style="font-size: 12px;" [pSelectableRow]="selectedData">
+                        <td>{{selectedData.id}}</td>
+                        <td>{{selectedData.customerName}}</td>
+                        <td>{{selectedData.creditType}}</td>
+                        <td>{{selectedData.applAmt}}</td>
+                        <td>{{selectedData.repayTerm}}</td>
+                        <td>{{selectedData.repayPeriod}}</td>
+                        <td>{{selectedData.status}}</td>
+                        <td>{{selectedData.createDate | date}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</p-panel>

@@ -1,0 +1,75 @@
+<div class="form-row">
+    <div [class]="cssBodyWidth">
+        <p-panel header="Maintain Biller">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <div class="col-sm-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Biller code:</mat-label>
+                            <input matInput autocomplete="off" [readonly]="!isAddMode" formControlName="billerCode">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Description</mat-label>
+                            <input matInput autocomplete="off" formControlName="description">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Account No:</mat-label>
+                            <input matInput autocomplete="off" formControlName="acctNo">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Vendor Code:</mat-label>
+                            <input matInput autocomplete="off" formControlName="vendorCode">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Vendor Password:</mat-label>
+                            <input matInput autocomplete="off" formControlName="vendorPassword">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>SMS Template</mat-label>
+                            <input matInput autocomplete="off" formControlName="smsTemplate">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Status</mat-label>
+                            <mat-select formControlName="status">
+                                <mat-option value="ACTIVE">ACTIVE</mat-option>
+                                <mat-option value="INACTIVE">INACTIVE</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 text-right">
+                        <button [disabled]="loading[0]" *ngIf="!isView" class="btn btn-primary btn-sm mr-1 mb-1"
+                            style="width: 90px;" (click)="onSubmit()">
+                            <span *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+                            <i class="fa fa-check  "></i> Save
+                        </button>
+                        <button class="btn btn-danger btn-sm mr-1 mb-1" type="button" style="width: 90px;" type="button"
+                            (click)="onClose()">
+                            <i class="fa fa-times  "></i> Close
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </p-panel>
+    </div>
+    <div *ngIf="!isAddMode" class="col-2 float-right">
+        <p-menu styleClass="primeng-menu" [model]="items"></p-menu>
+    </div>
+</div>

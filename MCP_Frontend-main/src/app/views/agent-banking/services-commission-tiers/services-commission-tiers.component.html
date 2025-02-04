@@ -1,0 +1,71 @@
+<form [formGroup]="form">
+    <app-service-code-header></app-service-code-header>
+    <div class="form-row">
+        <div class="col-6">
+            <label class="required-error">{{errorMessage}}</label>
+        </div>
+        <div class=" col-6  text-right">
+            <button type="button" class="btn btn-sm mr-1 mb-1 btn-success mr-2 btn-border" (click)="addRow()">Add
+                Tier</button>
+            <button [disabled]="loading" style="width: 100px;" class="btn mr-1 mb-1 btn-primary btn-sm btn-border"
+                (click)="maintainServiceChargeTiers()" type="submit">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Save
+            </button>
+            <button type="button" class="btn btn-sm mr-1 mb-1 btn-danger mr-2 btn-border"
+                (click)="cancel()">Close</button>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-12">
+            <table id="accountHistory" mat-table [dataSource]="dataSource" style="width: 100%;" matSort
+                class="mat-elevation-z0">
+                <ng-container matColumnDef="tierNo">
+                    <th mat-header-cell *matHeaderCellDef style="font-weight: bold;"> Tier No </th>
+                    <td mat-cell style="font-size: 11px;" *matCellDef="let element" style="padding: 5px;">
+                        {{element.tierNo}} </td>
+                </ng-container>
+                <ng-container matColumnDef="fromAmt">
+                    <th mat-header-cell *matHeaderCellDef class="text-right" style="font-weight: bold;">From Amount</th>
+                    <td mat-cell *matCellDef="let element; let i = index" style="padding: 5px;">
+                        <input type="number" readonly value={{element.fromAmt}} class="form-control text-right">
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="toAmt">
+                    <th mat-header-cell *matHeaderCellDef class="text-right" style="font-weight: bold;"> To Amount </th>
+                    <td mat-cell *matCellDef="let element; let i = index" style="padding: 5px;">
+                        <input type="number" value={{element.toAmt}}
+                            (change)="onToAmountEdited($event.target.value, i)" class="form-control text-right">
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="commissionAmount">
+                    <th mat-header-cell *matHeaderCellDef class="text-right" style="font-weight: bold;"> Tier Amount
+                    </th>
+                    <td mat-cell *matCellDef="let element; let i = index" style="padding: 5px;">
+                        <input type="number" value={{element.commissionAmount}}
+                            (change)="onTierAmountEdited($event.target.value, i)" class="form-control text-right">
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Remove">
+                    <th mat-header-cell *matHeaderCellDef class="text-right"></th>
+                    <td mat-cell *matCellDef="let element; let i = index">
+                        <button mat-icon-button class="popup-modal-background" (click)="removeRow(i)">
+                            <mat-icon style="font-size: 13px; font-weight: 700;">close</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns" style="font-weight: bold; height: 40px;"></tr>
+                <tr mat-row class="table-mat-row" *matRowDef="let row; columns: displayedColumns;"
+                    [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+                    (mouseover)="row.hovered = true" (mouseout)="row.hovered = false">
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-12  text-center">
+            <span style="color: blue;" *ngIf="loading[0]"
+                class="spinner-border spinner-border-sm mr-1 text-center"></span>
+        </div>
+    </div>
+</form>

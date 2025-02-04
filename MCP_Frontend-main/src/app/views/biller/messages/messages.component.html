@@ -1,0 +1,64 @@
+<p-panel header="Messages">
+    <form [formGroup]="form">
+        <div class="form-row">
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Recipient Phone:</mat-label>
+                    <input matInput autocomplete="off" type="text" formControlName="phoneNo">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Start Date:</mat-label>
+                    <input matInput autocomplete="off" required type="date" formControlName="fromDate">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>End Date:</mat-label>
+                    <input matInput autocomplete="off" required type="date" formControlName="toDate">
+                </mat-form-field>
+            </div>
+            <div class="col-md-3 text-right">
+                <button class="btn btn-success btn-sm mt-1 mr-1 mb-1" style="height: 60%;" (click)="onSearch()">
+                    <span *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+                    <i class="fa fa-pencil"></i> Search
+                </button>
+                <button class="btn btn-danger btn-sm mt-1 mr-1 mb-1" style="height: 60%;" routerLink="/dashboard/analytics">
+                    <i class="fa fa-times  "></i> Close
+                </button>
+            </div>
+        </div>
+        <div class="form-group form-row">
+            <div class="col-sm-12">
+                <p-table [value]="data" [paginator]="true" [rows]="50"
+                    styleClass="p-datatable-sm mt-1 ml-0 mr-0 prime-ng-table" responsiveLayout="scroll"
+                    [responsive]="true" selectionMode="single" [(selection)]="selectedData" dataKey="messageId"
+                    [loading]="loading[0]" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr style="font-size: 12px;">
+                            <th>Date</th>
+                            <th>Mobile Phone</th>
+                            <th>Message Text</th>
+                            <th>Status</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-selectedData>
+                        <tr style="font-size: 12px;" [pSelectableRow]="selectedData">
+                            <td>{{selectedData.timeGenerated}}</td>
+                            <td>{{selectedData.recipientNumber}}</td>
+                            <td style="width: 600px;">{{selectedData.messageText}}</td>
+                            <td>{{selectedData.messageStatus}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-12  text-center">
+                <span style="color: blue;" *ngIf="loading[0]"
+                    class="spinner-border spinner-border-sm mr-1 text-center"></span>
+            </div>
+        </div>
+    </form>
+</p-panel>

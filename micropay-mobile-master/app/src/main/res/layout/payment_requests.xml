@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/payment_view"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/phoneNumberTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Phone Number: 256751789800"
+             android:textColor="@color/textViewColor"
+            android:textStyle="bold"
+            android:fontFamily="@font/baloo_bhai_2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/amountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Amount: 10000"
+             android:textColor="@color/textViewColor"
+            android:fontFamily="@font/baloo_bhai_2"
+            app:layout_constraintTop_toBottomOf="@+id/phoneNumberTextView"/>
+
+        <TextView
+            android:id="@+id/reasonTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Reason: Payment for services"
+            android:textColor="@color/textViewColor"
+            android:fontFamily="@font/baloo_bhai_2"
+            app:layout_constraintTop_toBottomOf="@+id/amountTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/requestDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Request Date: 2024-08-03"
+            android:textColor="@color/textViewColor"
+            android:fontFamily="@font/baloo_bhai_2"
+            app:layout_constraintTop_toBottomOf="@+id/reasonTextView"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

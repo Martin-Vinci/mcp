@@ -1,0 +1,162 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/iconTextColor"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="10dp"
+            android:text="My Account(s) *"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/my_account"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/black"
+            android:padding="0dp"
+            android:spinnerMode="dialog"></Spinner>
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="15dp"
+            android:text="Customer Account"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/centenary_customer_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Customer Account"
+            android:inputType="phone" />
+
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Small"
+            android:id="@+id/lbl_package_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto"
+            android:text="Bank Code*"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/package_type"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/black"
+            android:fontFamily="@font/roboto"
+            android:padding="0dp"
+            android:spinnerMode="dialog"
+            android:textSize="17dp"></Spinner>
+
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="15dp"
+            android:text="Trans Amount *"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tran_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint=" Amount"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="15dp"
+            android:text="Narration"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tran_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Narration"
+            android:inputType="textCapCharacters" />
+
+        <TextView
+            android:id="@+id/depositor_nm"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="10dp"
+            android:text="Depositor Name"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/depositor_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:hint="Depositor Name"
+            android:inputType="textCapCharacters"
+            android:visibility="visible" />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="10dp"
+            android:text="Depositor Phone"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/depositor_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:hint="Depositor Phone"
+            android:inputType="textCapCharacters"
+            android:visibility="visible" />
+
+
+        <Button
+            android:id="@+id/btn_process"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/card_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:imeOptions="actionDone|actionSend"
+            android:text="Submit"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

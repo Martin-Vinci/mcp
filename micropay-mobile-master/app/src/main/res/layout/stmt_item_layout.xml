@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:paddingBottom="20dp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/stmnt_tranDate"
+        android:layout_width="80dp"
+        android:layout_marginLeft="5dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/crimson_text"
+        android:textAlignment="center"
+        android:textColor="@color/statement_item_color"
+        android:textSize="14sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/stmnt_amount"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@id/stmnt_tranDate"
+        android:fontFamily="@font/crimson_text"
+        android:gravity="right"
+        android:textColor="@color/statement_item_color"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/stmnt_narration"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/stmnt_amount"
+        android:fontFamily="@font/crimson_text"
+        android:gravity="left"
+        android:textColor="@color/statement_item_color"
+        android:textSize="14sp"
+        android:textStyle="normal"/>
+    <TextView
+        android:id="@+id/stmnt_balance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/crimson_text"
+        android:layout_toRightOf="@id/stmnt_narration"
+        android:gravity="right"
+        android:layout_marginRight="5dp"
+        android:layout_marginHorizontal="10dp"
+        android:textColor="@color/statement_item_color"
+        android:textSize="14sp"
+        android:textStyle="normal" />
+</RelativeLayout>

@@ -1,0 +1,77 @@
+<p-panel header="Maintain Service Channel">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Description:</mat-label>
+                    <input matInput autocomplete="off" formControlName="description">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Channel Code</mat-label>
+                    <input matInput autocomplete="off" [readonly]="!isAddMode" (input)="onKeyUP($event.target.value)"
+                        formControlName="channelCode">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Channel UserName:</mat-label>
+                    <input matInput autocomplete="off" formControlName="channelUsername">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Channel Password:</mat-label>
+                    <input matInput autocomplete="off" formControlName="channelPassword">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Enforce Password Expiry</mat-label>
+                    <mat-select formControlName="enforcePwdExpiry">
+                        <mat-option value="N">NO</mat-option>
+                        <mat-option value="Y">YES</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline" appDateFormat>
+                    <mat-label>Expiry date</mat-label>
+                    <input matInput formControlName="expiryDate" [matDatepicker]="expiryDatePicker">
+                    <mat-datepicker-toggle matSuffix [for]="expiryDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #expiryDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="status">
+                        <mat-option value="Active">Active</mat-option>
+                        <mat-option value="Inactive">Inactive</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 text-right">
+                <button [disabled]="loading[0]" *ngIf="!isView" class="btn btn-primary btn-sm mr-1 mb-1"
+                    style="width: 90px;" (click)="onSubmit()">
+                    <span *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+                    <i class="fa fa-check  "></i> Save
+                </button>
+                <button class="btn btn-danger btn-sm mr-1 mb-1" type="button" style="width: 90px;" type="button"
+                    (click)="onClose()">
+                    <i class="fa fa-times  "></i> Close
+                </button>
+            </div>
+        </div>
+    </form>
+</p-panel>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://channelws.soap.webservices.sunlyteesb.servicecops.com/" targetNamespace="http://channelws.soap.webservices.sunlyteesb.servicecops.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ChannelService" type="tns:ChannelService" />
+  <xs:element name="ChannelServiceResponse" type="tns:ChannelServiceResponse" />
+  <xs:complexType name="ChannelService">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:channelServiceImport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="channelServiceImport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="authorization" type="tns:channelAuthorization" />
+      <xs:element minOccurs="0" name="request" type="tns:channelRequestWrapper" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="channelAuthorization">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="channelCode" type="xs:string" />
+      <xs:element minOccurs="0" name="channelRequestDigest" type="xs:string" />
+      <xs:element minOccurs="0" name="channelRequestTimestamp" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="channelRequestWrapper">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="requestReference" type="xs:string" />
+      <xs:element minOccurs="0" name="serviceCode" type="xs:string" />
+      <xs:element minOccurs="0" name="serviceInputs" type="tns:serviceInputParamWrapper" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="serviceInputParamWrapper">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="financialBatch" nillable="true" type="tns:financialTransfer" />
+      <xs:element name="importParams">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string" />
+                  <xs:element minOccurs="0" name="value" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="financialTransfer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="creditAccountNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="creditInstructions" type="xs:string" />
+      <xs:element minOccurs="0" name="creditTransactionType" type="xs:string" />
+      <xs:element minOccurs="0" name="debitAccountNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="debitInstructions" type="xs:string" />
+      <xs:element minOccurs="0" name="debitTransactionType" type="xs:string" />
+      <xs:element name="extraParams">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string" />
+                  <xs:element minOccurs="0" name="value" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ChannelServiceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:channelServiceExport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="channelServiceExport">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:operationReturn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="serviceOutput" type="tns:serviceExportParamWrapper" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="operationReturn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="returnCode" type="xs:int" />
+      <xs:element minOccurs="0" name="returnMessage" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="serviceExportParamWrapper">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="batchOutputParams" nillable="true" type="tns:financialTransferAccountExport" />
+      <xs:element name="exportParameters">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string" />
+                  <xs:element minOccurs="0" name="value" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="transactionOutputParams" nillable="true" type="tns:financialTransactionWrapper" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="financialTransferAccountExport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="account" type="xs:string" />
+      <xs:element minOccurs="0" name="availableBalance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="bookBalance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="currency" type="xs:string" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="financialTransactionWrapper">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="balance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="narration" type="xs:string" />
+      <xs:element minOccurs="0" name="previousBalance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="reference" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

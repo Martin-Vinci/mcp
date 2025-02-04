@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".Crash_Activity">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context=".Crash_Activity"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <ImageView
+            android:id="@+id/crashReportImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_view_dropdown_margin"
+            android:layout_marginTop="@dimen/text_view_dropdown_margin"
+            android:layout_marginRight="@dimen/text_view_dropdown_margin"
+            android:scaleType="centerInside"
+            android:src="@drawable/broken_robot_1348x1080" />
+
+        <TextView
+            android:id="@+id/crashReportMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_view_dropdown_margin"
+            android:layout_marginTop="@dimen/text_view_dropdown_margin"
+            android:layout_marginRight="@dimen/text_view_dropdown_margin"
+            android:layout_marginBottom="@dimen/margin10"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center_horizontal"
+            android:text="@string/crash_message"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+</RelativeLayout>

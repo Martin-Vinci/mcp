@@ -1,0 +1,82 @@
+<p-panel header="Transactions Search">
+    <form [formGroup]="form">
+        <div class="form-row">
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Service Code:</mat-label>
+                    <mat-select formControlName="serviceCode">
+                        <mat-option></mat-option>
+                        <mat-option *ngFor="let item of transCodes" [value]="item.serviceCode">
+                            {{item.description}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Start Date:</mat-label>
+                    <input matInput autocomplete="off" required type="date" formControlName="startDate">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline">
+                    <mat-label>End Date:</mat-label>
+                    <input matInput autocomplete="off" required type="date" formControlName="endDate">
+                </mat-form-field>
+            </div>
+            <div class="col-md-5 text-right">
+                <button class="btn btn-primary btn-sm mr-1 mb-1 " (click)="onSearch()">
+                    <i class="fa fa-search"></i> Search
+                </button>
+                <button class="btn btn-warning btn-sm mr-1 mb-1" (click)="openDetailsWindow()">
+                    <span *ngIf="loading[1]" class="spinner-border spinner-border-sm mr-1"></span>
+                    <i class="fa fa-eye"></i> View Details
+                </button>
+                <button class="btn btn-success btn-sm mr-1 mb-1 " (click)="exportExcel()">
+                    <i class="pi pi-file-excel"></i> Export
+                </button>
+                <button class="btn btn-danger btn-sm mr-1 mb-1 " routerLink="/dashboard/analytics">
+                    <i class="fa fa-times  "></i> Close
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group form-row">
+            <div class="col-sm-12">
+                <p-table [value]="data" [paginator]="true" [rows]="50"
+                    styleClass="p-datatable-sm mt-1 ml-2 mr-2 prime-ng-table" responsiveLayout="scroll"
+                    [responsive]="true" selectionMode="single" [(selection)]="selectedData" dataKey="id"
+                    [loading]="loading[0]" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr style="font-size: 12px;">
+                            <th>Trans ID</th>
+                            <th>Source Account</th>
+                            <th>Dest. Account</th>
+                            <th style="text-align: right;">Amount</th>
+                            <th>Success Flag</th>
+                            <th style="width: 200px;">Trans Description</th>
+                            <th>Trans Date</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-selectedData>
+                        <tr style="font-size: 12px;" [pSelectableRow]="selectedData">
+                            <td>{{selectedData.id}}</td>
+                            <td>{{selectedData.drAcctNo}}</td>
+                            <td>{{selectedData.crAcctNo}}</td>
+                            <td style="text-align: right;">{{selectedData.amount | number}}</td>
+                            <td>{{selectedData.successFlag == 'Y' ? 'SUCCESS' : 'FAILED'}}</td>
+                            <td>{{selectedData.transDescr}}</td>
+                            <td>{{selectedData.systemDate}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-12  text-center">
+                <span style="color: blue;" *ngIf="loading[0]"
+                    class="spinner-border spinner-border-sm mr-1 text-center"></span>
+            </div>
+        </div>
+    </form>
+</p-panel>

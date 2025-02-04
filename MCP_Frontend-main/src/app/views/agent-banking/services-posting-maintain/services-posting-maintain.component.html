@@ -1,0 +1,102 @@
+<p-panel header="Maintain Posting Policies">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <app-service-code-header></app-service-code-header>
+        <div class="form-row">
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Posting Priority:</mat-label>
+                    <input matInput autocomplete="off" type="number" formControlName="postingPriority">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Amount type:</mat-label>
+                    <mat-select formControlName="amountType" (selectionChange)="onAmountTypeSelected()">
+                        <mat-option *ngFor="let item of amountTypes" [value]="item.itemType">
+                            {{item.itemType}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Source Account</mat-label>
+                    <mat-select formControlName="sourceAccount">
+                        <mat-option *ngFor="let item of accountTypes" [value]="item.itemType">
+                            {{item.itemType}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Destination account:</mat-label>
+                    <mat-select formControlName="destinationAccount">
+                        <mat-option *ngFor="let item of accountTypes" [value]="item.itemType">
+                            {{item.itemType}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Trust Posting Category:</mat-label>
+                    <mat-select formControlName="trustPostingCategory">
+                        <mat-option></mat-option>
+                        <mat-option value="TRUST_TO_MICROPAY">TRUST_TO_MICROPAY</mat-option>
+                        <mat-option value="MICROPAY_TO_TRUST">MICROPAY_TO_TRUST</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Transaction Type:</mat-label>
+                    <mat-select formControlName="transCategory">
+                        <mat-option value="P2P">P2P</mat-option>
+                        <mat-option value="GL2GL">GL2GL</mat-option>
+                        <mat-option value="GL2DP">GL2DP</mat-option>
+                        <mat-option value="DP2GL">DP2GL</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Vendor Share:</mat-label>
+                    <input matInput autocomplete="off" [readonly]="vendorShareReadOnly" type="number"
+                        formControlName="tranAmtVendorShare">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Bank Share:</mat-label>
+                    <input matInput autocomplete="off" [readonly]="bankShareReadOnly" type="number"
+                        formControlName="tranAmtBankShare">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Agent Share:</mat-label>
+                    <input matInput autocomplete="off" [readonly]="agentShareReadOnly" type="number"
+                        formControlName="tranAmtAgentShare">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 text-right">
+                <button [disabled]="loading[0]" *ngIf="!isView" class="btn btn-primary btn-sm mr-1 mb-1"
+                    style="width: 90px;" (click)="onSubmit()">
+                    <span *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+                    <i class="fa fa-check  "></i> Save
+                </button>
+                <button class="btn btn-danger btn-sm mr-1 mb-1" type="button" style="width: 90px;"  type="button" (click)="onClose()">
+                    <i class="fa fa-times  "></i> Close
+                </button>
+            </div>
+        </div>
+    </form>
+</p-panel>

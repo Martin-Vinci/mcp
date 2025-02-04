@@ -1,0 +1,60 @@
+<form [formGroup]="form">
+    <div class="row form-group">
+        <div class="col-md-3">
+            <label>First Name.</label>
+            <input formControlName="firstName" type="text" class="form-control" placeholder="First Name." />
+        </div>
+        <div class="col-md-3">
+            <label>Middle Name</label>
+            <input formControlName="phoneNo" type="text" class="form-control" placeholder="First Name" />
+        </div>
+        <div class="col-md-3">
+            <label>Last Name</label>
+            <input formControlName="lastName" type="text" class="form-control" placeholder="Middle Name" />
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="offset-sm-3 col-sm-9  text-right">
+            <p-button label="Search" styleClass="p-button-success p-button-sm" icon="pi pi-search"
+                [loading]="loading[0]" (onClick)="onSearch()">
+            </p-button>
+            <p-button label="Select" styleClass="p-button-success p-button-sm" icon="pi pi-check" (onClick)="submit()">
+            </p-button>
+            <p-button label="Close" styleClass="p-button-danger p-button-sm" icon="pi pi-times" (onClick)="cancel()">
+            </p-button>
+        </div>
+    </div>
+    <div class="form-group form-row">
+        <div class="col-sm-12">
+            <p-table [value]="data" [paginator]="true" [rows]="50" [rowsPerPageOptions]="[50,100,150]"
+                styleClass="p-datatable-sm mt-3 ml-2 mr-2" responsiveLayout="scroll" [responsive]="true"
+                selectionMode="single" [(selection)]="selectedData" dataKey="id" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr style="font-size: 13px;">
+                        <th>Customer #</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone #</th>
+                        <th>Status</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-selectedData>
+                    <tr style="font-size: 13px;" [pSelectableRow]="selectedData">
+                        <td>{{selectedData.id}}</td>
+                        <td>{{selectedData.firstName}}</td>
+                        <td>{{selectedData.lastName}}</td>
+                        <td>{{selectedData.phoneNo}}</td>
+                        <td>{{selectedData.status}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-12  text-center">
+            <span style="color: blue;" *ngIf="loading[0]"
+                class="spinner-border spinner-border-sm mr-1 text-center"></span>
+        </div>
+    </div>
+</form>

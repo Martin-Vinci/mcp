@@ -1,0 +1,173 @@
+<p-panel header="Customer Details">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput autocomplete="off" formControlName="firstName">
+                    <div *ngFor="let validation of validation_messages.firstName" class="required-error">
+                        <div *ngIf="submitted && form.get('firstName').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Middle Name</mat-label>
+                    <input matInput autocomplete="off" formControlName="middleName">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput autocomplete="off" formControlName="lastName">
+                    <div *ngFor="let validation of validation_messages.lastName" class="required-error">
+                        <div *ngIf="submitted && form.get('lastName').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <mat-select formControlName="title">
+                        <mat-option value="Dr">Dr</mat-option>
+                        <mat-option value="Mr">Mr</mat-option>
+                        <mat-option value="Mrs">Mrs</mat-option>
+                        <mat-option value="Miss">Miss</mat-option>
+                    </mat-select>
+                    <div *ngFor="let validation of validation_messages.title" class="required-error">
+                        <div *ngIf="submitted && form.get('title').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Birth Date:</mat-label>
+                    <input matInput formControlName="birthDt" [matDatepicker]="endDatePicker">
+                    <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endDatePicker></mat-datepicker>
+                    <div *ngFor="let validation of validation_messages.birthDt" class="required-error">
+                        <div *ngIf="submitted && form.get('birthDt').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>ID #</mat-label>
+                    <input matInput autocomplete="off" formControlName="idNo">
+                    <div *ngFor="let validation of validation_messages.idNo" class="required-error">
+                        <div *ngIf="submitted && form.get('idNo').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile Phone</mat-label>
+                    <input matInput autocomplete="off" formControlName="phoneNo">
+                    	<div *ngFor="let validation of validation_messages.phoneNo" class="required-error">
+					<div *ngIf="submitted && form.get('phoneNo').hasError(validation.type)">
+						{{validation.message}}
+					</div>
+					<span class="required-error" *ngIf="f.phoneNo.hasError('pattern')">Please enter
+						valid Mobile Phone No (256770000000).</span>
+				</div>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>FCS Number</mat-label>
+                    <input matInput autocomplete="off" formControlName="fcsNo">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email address</mat-label>
+                    <input matInput autocomplete="off" formControlName="emailAddress">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Occupation</mat-label>
+                    <input matInput autocomplete="off" formControlName="occupation">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>NextOfKin Name</mat-label>
+                    <input matInput autocomplete="off" formControlName="nextOfKinName">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>NextOfKin Address</mat-label>
+                    <input matInput autocomplete="off" formControlName="nextOfKinAddress">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Place of Residence</mat-label>
+                    <input matInput autocomplete="off" formControlName="placeOfResidence">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Marital Status</mat-label>
+                    <mat-select formControlName="maritalStatus">
+                        <mat-option value="SINGLE">SINGLE</mat-option>
+                        <mat-option value="MARRIED">MARRIED</mat-option>
+                    </mat-select>
+                    <div *ngFor="let validation of validation_messages.maritalStatus" class="required-error">
+                        <div *ngIf="submitted && form.get('maritalStatus').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Business Type</mat-label>
+                    <mat-select formControlName="businessType">
+                        <mat-option value="SOLE_PROPRIETORSHIP">SOLE_PROPRIETORSHIP</mat-option>
+                        <mat-option value="PARTNERSHIP">PARTNERSHIP</mat-option>
+                        <mat-option value="LTD_LIABILITY_CO">LTD_LIABILITY_CO</mat-option>
+                        <mat-option value="CORPORATION">CORPORATION</mat-option>
+                        <mat-option value="NONE">NONE</mat-option>
+                    </mat-select>
+                    <div *ngFor="let validation of validation_messages.businessType" class="required-error">
+                        <div *ngIf="submitted && form.get('businessType').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 text-right">
+                <button [disabled]="loading" *ngIf="!isView" class="btn btn-primary btn-sm mr-1 mb-1"
+                    style="width: 90px;" (click)="onSubmit()">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    <i class="fa fa-check  "></i> Save
+                </button>
+                <button class="btn btn-danger btn-sm mr-1 mb-1" type="button" style="width: 90px;" type="button"
+                    (click)="onClose()">
+                    <i class="fa fa-times  "></i> Close
+                </button>
+            </div>
+        </div>
+    </form>
+</p-panel>

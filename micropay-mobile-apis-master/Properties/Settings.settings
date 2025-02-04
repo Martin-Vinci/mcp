@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="micropay_apis.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="micropay_apis_EQUIWEB_API_AgentBankingImpl" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://localhost:44319/AgentBankingImpl.asmx</Value>
+    </Setting>
+    <Setting Name="micropay_apis_equiweb_apis_ChannelIntegrator" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://mb.micropay.co.ug:9010/equiweb-ci-uat/ChannelIntegrator.asmx</Value>
+    </Setting>
+    <Setting Name="micropay_apis_ug_co_pegasus_test_PegPay" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://test.pegasus.co.ug:8019/TestPegPayApi/PegPay.asmx</Value>
+    </Setting>
+    <Setting Name="micropay_apis_CenteESB_ChannelSoapWs" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:7001/SunlyteESB/ChannelSoapWs</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,62 @@
+<p-panel header="Maintain Service Commssion">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <app-service-code-header></app-service-code-header>
+        <div class="form-row">
+            <div class="col-sm-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Commission Type</mat-label>
+                    <mat-select formControlName="commissionType">
+                        <mat-option value="AMOUNT">AMOUNT</mat-option>
+                        <mat-option value="TIER">TIER</mat-option>
+                        <mat-option value="PERCENTAGE">PERCENTAGE</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Amount/Percentage</mat-label>
+                    <input matInput autocomplete="off" formControlName="amount">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Calculation Basis</mat-label>
+                    <mat-select formControlName="calculationBasis">
+                        <mat-option value="CHARGE_AMOUNT">CHARGE_AMOUNT</mat-option>
+                        <mat-option value="TRANS_AMOUNT">TRANS_AMOUNT</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="status">
+                        <mat-option value="Active">Active</mat-option>
+                        <mat-option value="Inactive">Inactive</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 text-right">
+                <button [disabled]="loading[0]" *ngIf="!isView" class="btn btn-primary btn-sm mr-1 mb-1"
+                style="width: 90px;" (click)="onSubmit()">
+                <span *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+                <i class="fa fa-check  "></i> Save
+            </button>
+                <button [disabled]="loading[0]" *ngIf="!isView" type="button" class="btn btn-primary btn-sm mr-1 mb-1"
+                    style="width: 90px;" (click)="openTierWindow()">
+                    <span *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+                    <i class="fa fa-check  "></i> Tier
+                </button>
+                <button class="btn btn-danger btn-sm mr-1 mb-1" type="button" style="width: 90px;"  type="button" (click)="onClose()">
+                    <i class="fa fa-times  "></i> Close
+                </button>
+            </div>
+        </div>
+    </form>
+</p-panel>

@@ -1,0 +1,201 @@
+<div class="form-row">
+    <div [class]="cssBodyWidth">
+        <p-panel header="Maintain Service">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">            
+                <div class="form-row">
+                    <div class="col-sm-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Service Code:</mat-label>
+                            <input matInput autocomplete="off" maxlength="5" formControlName="serviceCode">
+                            <!-- <div *ngFor="let validation of validation_messages.serviceCode" class="required-error">
+                                <div *ngIf="submitted && form.get('serviceCode').hasError(validation.type)">
+                                    {{validation.message}}
+                                </div>
+                            </div> -->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Description</mat-label>
+                            <input matInput autocomplete="off" formControlName="description">
+                            <!-- <div *ngFor="let validation of validation_messages.description" class="required-error">
+                                <div *ngIf="submitted && form.get('description').hasError(validation.type)">
+                                    {{validation.message}}
+                                </div>
+                            </div> -->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Transaction Type</mat-label>
+                            <mat-select formControlName="transType">
+                                <mat-option value="BILL">BILL</mat-option>
+                                <mat-option value="NON_BILL">NON_BILL</mat-option>
+                            </mat-select>
+                            <!-- <div *ngFor="let validation of validation_messages.transType" class="required-error">
+                                <div *ngIf="submitted && form.get('transType').hasError(validation.type)">
+                                    {{validation.message}}
+                                </div>
+                            </div> -->
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Biller Account</mat-label>
+                            <input matInput autocomplete="off" formControlName="billerAcctNo">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Charge Income Account</mat-label>
+                            <input matInput autocomplete="off" formControlName="bankIncomeAcctNo">
+                            <!-- <div *ngFor="let validation of validation_messages.bankIncomeAcctNo" class="required-error">
+                                <div *ngIf="submitted && form.get('bankIncomeAcctNo').hasError(validation.type)">
+                                    {{validation.message}}
+                                </div>
+                            </div> -->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Transitory Account</mat-label>
+                            <input matInput autocomplete="off" formControlName="transitAcctNo">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Expense Payable Account</mat-label>
+                            <input matInput autocomplete="off" formControlName="expenseAcctNo">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Debit/Credit</mat-label>
+                            <mat-select formControlName="debitCredit">
+                                <mat-option value="CREDIT">CREDIT</mat-option>
+                                <mat-option value="DEBIT">DEBIT</mat-option>
+                            </mat-select>
+                            <!-- <div *ngFor="let validation of validation_messages.debitCredit" class="required-error">
+                                <div *ngIf="submitted && form.get('debitCredit').hasError(validation.type)">
+                                    {{validation.message}}
+                                </div>
+                            </div> -->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Min. Trans Amount</mat-label>
+                            <input matInput autocomplete="off" formControlName="minTransAmt">
+                            <!-- <div *ngFor="let validation of validation_messages.minTransAmt" class="required-error">
+                                <div *ngIf="submitted && form.get('minTransAmt').hasError(validation.type)">
+                                    {{validation.message}}
+                                </div>
+                            </div> -->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Service Literal</mat-label>
+                            <input matInput autocomplete="off" formControlName="transLiteral">
+                            <!-- <div *ngFor="let validation of validation_messages.transLiteral" class="required-error">
+                                <div *ngIf="submitted && form.get('transLiteral').hasError(validation.type)">
+                                    {{validation.message}}
+                                </div>
+                            </div> -->
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Maintenance Percentage</mat-label>
+                            <input matInput autocomplete="off" formControlName="maintainCommissionPercentage">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Maintenance Basis</mat-label>
+                            <mat-select formControlName="maintenanceCalculationBasis">
+                                <mat-option value="MICROPAY_COMMISSION">MICROPAY_COMMISSION</mat-option>
+                                <mat-option value="AGENT_COMMISSION">AGENT_COMMISSION</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Maintenance Account</mat-label>
+                            <input matInput autocomplete="off" formControlName="maintenanceAccount">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>MM Tax Percentage</mat-label>
+                            <input matInput autocomplete="off" formControlName="mobileMoneyTaxPercentage">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Max. Trans Amount</mat-label>
+                            <input matInput autocomplete="off" formControlName="maxTransAmt">
+                            <!-- <div *ngFor="let validation of validation_messages.maxTransAmt" class="required-error">
+                                <div *ngIf="submitted && form.get('maxTransAmt').hasError(validation.type)">
+                                    {{validation.message}}
+                                </div>
+                            </div> -->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Daily Withdraw Limit</mat-label>
+                            <input matInput autocomplete="off" formControlName="dailyWithdrawLimit">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Create Date:</mat-label>
+                            <input matInput formControlName="createDate" [matDatepicker]="endDatePicker">
+                            <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                            <mat-datepicker #endDatePicker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Status</mat-label>
+                            <mat-select formControlName="status">
+                                <mat-option value="Active">Active</mat-option>
+                                <mat-option value="Inactive">Inactive</mat-option>
+                            </mat-select>
+                            <!-- <div *ngFor="let validation of validation_messages.status" class="required-error">
+                                <div *ngIf="submitted && form.get('status').hasError(validation.type)">
+                                    {{validation.message}}
+                                </div>
+                            </div> -->
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12 text-right">
+                        <button [disabled]="loading[0]" *ngIf="!isView" class="btn btn-primary btn-sm mr-1 mb-1" style="width: 90px;" (click)="onSubmit()">
+                            <span *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+                            <i class="fa fa-check  "></i> Save
+                        </button>
+                        <button class="btn btn-danger btn-sm mr-1 mb-1" style="width: 90px;"  type="button" (click)="onClose()">
+                            <i class="fa fa-times  "></i> Close
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </p-panel>
+    </div>
+    <div *ngIf="!isAddMode" class="col-2 float-right">
+        <p-menu styleClass="primeng-menu" [model]="items"></p-menu>
+    </div>
+</div>

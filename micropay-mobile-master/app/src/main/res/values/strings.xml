@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Micropay Mobile</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_signout">Sign out</string>
+
+    <string name="action_print">Launch Printer</string>
+
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="network_error">An error occurred while processing your request.</string>
+    <string name="unable_to_connect">Cannot connect to server. No network available</string>
+    <string name="invalid_paswd">Invalid PIN entered</string>
+    <string name="invalid_paswd_length">Invalid password length entered (5 digits)</string>
+    <string name="invalid_agent_code_length">Invalid Agent Code length entered (5 digits)</string>
+    <string name="invalid_phone_no">Invalid Phone Number</string>
+    <string name="invalid_outlet_code">Invalid Outlet code entered</string>
+    <string name="verify_details">Please specify your PIN to verify your agent banking profile.</string>
+    <string name="pin_change_txt">It\'s important you always change your Password regularly in order to stay safe</string>
+    <string name="invalid_password">Invalid Password</string>
+    <string name="title_activity_main"> </string>
+
+    <string name="fingerauth_dialog_description">Verify fingerprint to login to Micropay mobile</string>
+    <string name="fingerauth_dialog_hint">Touch sensor</string>
+    <string name="fingerauth_dialog_not_recognized">Fingerprint not recognized. Try again</string>
+    <string name="fingerauth_dialog_success">Fingerprint recognized</string>
+    <string name="micropay_agent">Micropay</string>
+    <string name="no_network">Cannot connect to bank platform. No network available</string>
+    <string name="crash_message">Oops!!. Application has crashed.\nError report has been uploaded and we shall review it shortly.\n\nThank you.</string>
+    <string name="send_report">Send Report</string>
+    <string name="title_activity_crash_">Crash_Activity</string>
+    <string name="phone_permission">In order to automatically place a phone call, Micropay mobile requires a phone call permission.</string>
+    <string name="phone_copied">We\'ve also copied the phone number to clip for your convenience</string>
+    <string name="feature_denied">You are not allowed to access this feature</string>
+    <string name="funds_transfer">Transfer to Outlet</string>
+    <string name="biometric_scanner_failure">Biometric scanner not configured. Please configure a biometric device to verify fingerprints</string>
+    <string name="printer_disabled">Printing not enabled. You will need to configure a printer under settings</string>
+    <string name="account_not_found">We are unable to retrieve the account number details</string>
+    <string name="crash_report_failed">Were unable to gather all the necessary information required that caused this error</string>
+    <string name="cust_verified">Customer Verified.</string>
+    <string name="resp_timeout">Response timeout</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_customer_home">CustomerHomeActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="receipient_phone_number">Recipient phone number</string>
+
+</resources>

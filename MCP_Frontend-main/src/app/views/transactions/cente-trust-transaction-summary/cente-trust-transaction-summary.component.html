@@ -1,0 +1,68 @@
+<p-panel header="Cente-Trust Transactions">
+    <form [formGroup]="form">
+        <div class="form-row">
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Start Date:</mat-label>
+                    <input matInput autocomplete="off" required type="date" formControlName="startDate">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>End Date:</mat-label>
+                    <input matInput autocomplete="off" required type="date" formControlName="endDate">
+                </mat-form-field>
+            </div>
+            <div class="col-md-5 text-right">
+                <button class="btn btn-primary btn-sm mr-2 mb-1 " (click)="onSearch()">
+                    <i class="fa fa-search"></i> Search
+                </button>
+                <button class="btn btn-primary btn-sm mr-2 mb-1 " (click)="onViewDetails()">
+                    <i class="fa fa-search"></i> Details
+                </button>
+                <button class="btn btn-success btn-sm mr-2 mb-1 " (click)="exportExcel()">
+                    <i class="pi pi-file-excel"></i> Export
+                </button>
+                <button class="btn btn-danger btn-sm mr-1 mb-1 " routerLink="/dashboard/analytics">
+                    <i class="fa fa-times  "></i> Close
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group form-row">
+            <div class="col-sm-12">
+                <p-table [value]="data" [paginator]="true" [rows]="50"
+                    styleClass="p-datatable-sm mt-1 ml-2 mr-2 prime-ng-table" responsiveLayout="scroll"
+                    [responsive]="true" selectionMode="single" [(selection)]="selectedData" dataKey="batchId"
+                    [loading]="loading[0]" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr style="font-size: 12px;">
+                            <th>Posting Date</th>
+                            <th>Description</th>
+                            <th style="text-align: right;">Amount</th>
+                            <th style="text-align: right;">Operation Account Balance</th>
+                            <th style="text-align: right;">Escrow Account Balance</th>
+                            <th>Status</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-selectedData>
+                        <tr style="font-size: 12px;" [pSelectableRow]="selectedData">
+                            <td>{{selectedData.postingDate}}</td>
+                            <td>{{selectedData.transDescr}}</td>
+                            <td style="text-align: right;">{{selectedData.amount | number}}</td>
+                            <td style="text-align: right;">{{selectedData.crdbOppAcctBal | number}}</td>
+                            <td style="text-align: right;">{{selectedData.crdbEscrowAcctBal | number}}</td>
+                            <td>{{selectedData.status}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-12  text-center">
+                <span style="color: blue;" *ngIf="loading[0]"
+                    class="spinner-border spinner-border-sm mr-1 text-center"></span>
+            </div>
+        </div>
+    </form>
+</p-panel>

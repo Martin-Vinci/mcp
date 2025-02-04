@@ -1,0 +1,81 @@
+<p-panel header="Maintain User">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="col-sm-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Full Name:</mat-label>
+                    <input matInput autocomplete="off" formControlName="fullName">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>User Name</mat-label>
+                    <input matInput autocomplete="off" [readonly]="!isAddMode" (input)="onKeyUP($event.target.value)" formControlName="userName">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>User Role</mat-label>
+                    <mat-select formControlName="userRoleId">
+                        <mat-option *ngFor="let item of userRolesPickList" [value]="item.userTypeId">
+                            {{item.description}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>   
+        <div class="form-row">
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email Address:</mat-label>
+                    <input matInput autocomplete="off" formControlName="emailAddress">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Phone Number:</mat-label>
+                    <input matInput autocomplete="off" formControlName="phoneNo">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Receive daily biller statements</mat-label>
+                    <mat-select formControlName="receiveBillerStmnt">
+                        <mat-option value="N">NO</mat-option>
+                        <mat-option value="Y">YES</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Lock User</mat-label>
+                    <mat-select formControlName="lockUser">
+                        <mat-option value="N">NO</mat-option>
+                        <mat-option value="Y">YES</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Password:</mat-label>
+                    <input matInput autocomplete="off" [readonly]="!isAddMode" type="password" formControlName="userPwd">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 text-right">
+                <button [disabled]="loading[0]" *ngIf="!isView" class="btn btn-primary btn-sm mr-1 mb-1" style="width: 90px;" (click)="onSubmit()">
+                    <span *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+                    <i class="fa fa-check  "></i> Save
+                </button>
+                <button class="btn btn-danger btn-sm mr-1 mb-1" type="button" style="width: 90px;"  type="button" (click)="onClose()">
+                    <i class="fa fa-times  "></i> Close
+                </button>
+            </div>
+        </div>
+    </form>
+</p-panel>

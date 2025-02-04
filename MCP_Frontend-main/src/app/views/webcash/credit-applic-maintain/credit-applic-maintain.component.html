@@ -1,0 +1,138 @@
+<p-panel header="Credit Application">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div *ngIf="customerName" class="form-group form-row">
+            <div class="col-md-2">
+                <label style="font-size: 13px;">First Name.</label>
+            </div>
+            <div class="col-md-3">
+                <label style="font-size: 13px; color: blue;">{{customer.firstName}}</label>
+            </div>
+            <div class="col-md-2">
+                <label style="font-size: 13px;">Last Name.</label>
+            </div>
+            <div class="col-md-3">
+                <label style="font-size: 13px; color: blue;">{{customer.lastName}}</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Credit Amount.</mat-label>
+                    <input matInput type="number" autocomplete="off" formControlName="applAmt">
+                    <div *ngFor="let validation of validation_messages.applAmt" class="required-error">
+                        <div *ngIf="submitted && form.get('applAmt').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline" appDateFormat>
+                    <mat-label>Start date</mat-label>
+                    <input matInput formControlName="startDate" [matDatepicker]="startDatePicker"
+                        (dateChange)="determineMaturityDate()">
+                    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startDatePicker></mat-datepicker>
+                    <div *ngFor="let validation of validation_messages.startDate" class="required-error">
+                        <div *ngIf="submitted && form.get('startDate').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Term</mat-label>
+                    <input matInput type="number" autocomplete="off" formControlName="repayTerm"
+                        (keyup)="determineMaturityDate()">
+                    <div *ngFor="let validation of validation_messages.repayTerm" class="required-error">
+                        <div *ngIf="submitted && form.get('repayTerm').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Frequency</mat-label>
+                    <mat-select required formControlName="repayPeriod" (selectionChange)="determineMaturityDate()">
+                        <mat-option value="DAY">DAY</mat-option>
+                        <mat-option value="WEEK">WEEK</mat-option>
+                        <mat-option value="MONTH">MONTH</mat-option>
+                    </mat-select>
+                    <div *ngFor="let validation of validation_messages.repayPeriod" class="required-error">
+                        <div *ngIf="submitted && form.get('repayPeriod').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field readonly appearance="outline">
+                    <mat-label>End date</mat-label>
+                    <input readonly matInput formControlName="endDate" [matDatepicker]="endDateDatePicker">
+                    <mat-datepicker readonly #endDateDatePicker></mat-datepicker>
+                    <div *ngFor="let validation of validation_messages.endDate" class="required-error">
+                        <div *ngIf="submitted && form.get('endDate').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Purpose.</mat-label>
+                    <input matInput autocomplete="off" formControlName="loanPurpose">
+                    <div *ngFor="let validation of validation_messages.purpose" class="required-error">
+                        <div *ngIf="submitted && form.get('loanPurpose').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Status</mat-label>
+                    <input readonly matInput autocomplete="off" formControlName="status">
+                    <div *ngFor="let validation of validation_messages.status" class="required-error">
+                        <div *ngIf="submitted && form.get('status').hasError(validation.type)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <hr>
+        <div class="container">
+            <div class="row form-group">
+                <div class="col-md-12 text-right">
+                    <button *ngIf="!isView && !enableApprove" [disabled]="loading[0]" style="width: 80px;" (click)="onSubmit()"
+                        class="btn mr-1 mb-1 btn-primary btn-sm btn-border" type="button">
+                        <span *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+                        Save
+                    </button>
+                    <button *ngIf="enableApprove" [disabled]="loading[1]" style="width: 80px;" (click)="onReview('ACTIVE')"
+                        class="btn mr-1 mb-1 btn-success btn-sm btn-border" type="button">
+                        <span *ngIf="loading[1]" class="spinner-border spinner-border-sm mr-1"></span>
+                        Approve
+                    </button>
+                    <button *ngIf="enableApprove" [disabled]="loading[1]" style="width: 80px;"
+                        (click)="onReview('DECLINED')" class="btn mr-1 mb-1 btn-danger btn-sm btn-border"
+                        type="button">
+                        <span *ngIf="loading[1]" class="spinner-border spinner-border-sm mr-1"></span>
+                        Decline
+                    </button>
+                    <button class="btn btn-danger btn-sm mr-1 mb-1" type="button" style="width: 90px;" type="button"
+                        (click)="onClose()">
+                        <i class="fa fa-times  "></i> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</p-panel>

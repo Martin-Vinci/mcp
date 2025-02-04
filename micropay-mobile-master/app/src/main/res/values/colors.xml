@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#7b2d81</color>
+    <color name="colorPrimaryDark">#000063</color>
+    <color name="colorAccent">#6746c3</color>
+    <color name="colorAccentDull">#655a86</color>
+    <color name="backgroundColor">#fff</color>
+    <color name="cardViewColor">#fff</color>
+    <color name="colorUnRead">#607D8B</color>
+    <color name="colorRead">#374e59</color>
+    <color name="buttonColors">#40114d</color>
+    <color name="textViewColor">#5a2069</color>
+    <color name="colorCardTitle">#6b9b37</color>
+    <color name="no_serviced">#e40303</color>
+    <color name="part_serviced">#784848</color>
+    <color name="cancelled">#706565</color>
+    <color name="other">#dcb5b5</color>
+    <color name="serviced">#5DBCD2</color>
+    <color name="statement_item_color">#212121</color>
+
+    <color name="card_color">#ebece9</color>
+
+    <color name="card_white">#D6D8D4</color>
+
+    <color name="card_bg">#79b37d</color>
+
+    <color name="ligtPrimaryColor">#5f9c61</color>
+    <color name="iconTextColor">#FFFFFF</color>
+    <color name="primaryText">#212121</color>
+
+    <color name="dividerBorder">#BDBDBD</color>
+    <color name="secondaryText">#757575</color>
+    <color name="colorTransBg">#26d0dbf4</color>
+</resources>

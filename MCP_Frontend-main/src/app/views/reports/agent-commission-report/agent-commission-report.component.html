@@ -1,0 +1,110 @@
+<div class="card-body" style="background-color: white">
+    <form [formGroup]="form">
+        <div class="form-group form-row">
+            <div class="col-12">
+                <p-table #dt [columns]="cols" [value]="customers" selectionMode="single" sortMode="single"
+                    [paginator]="true" [rows]="50" [showCurrentPageReport]="true"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [rowsPerPageOptions]="[50,80,100]">
+                    <ng-template pTemplate="caption">
+                        <div class="form-row">
+                            <div class="col-md-2">
+                                <label style="font-size: 11px;">From Date</label>
+                                <input type="date" formControlName="startDate" class="form-control" style="font-size: 11px;">
+                            </div>
+                            <div class="col-md-2">
+                                <label style="font-size: 11px;">To Date</label>
+                                <input type="date" formControlName="endDate" class="form-control" style="font-size: 11px;">
+                            </div>
+                            <div class="col-md-2">
+                                <label style="font-size: 11px;">Service Types</label>
+                                <select class="form-control" style="font-size: 11px;"
+                                    formControlName="serviceCode">
+                                    <option selected></option>
+                                    <option *ngFor="let item of serviceList" value="{{item.serviceCode}}">
+                                        {{item.description}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label style="font-size: 11px;">Status</label>
+                                <select class="form-control" style="font-size: 11px;"
+                                    formControlName="successFlag">
+                                    <option></option>
+                                    <option value="Y">Posted</option>
+                                    <option value="N">Failed</option>                                   
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label style="font-size: 11px;">Agent Code</label>
+                                <select class="form-control" style="font-size: 11px;"
+                                    formControlName="postedBy">
+                                    <option selected></option>
+                                    <option *ngFor="let item of outletList" value="{{item.outletCode}}">
+                                        {{item.customerName}}
+                                    </option>
+                                </select>
+                               <span style="color: blue;"*ngIf="agentsLoading" class="spinner-border spinner-border-sm mr-1"></span>
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                <br>
+                                <div class="flex">
+                                    <button type="button" pButton pRipple icon="pi pi-refresh"
+                                        (click)="findReportData()" class="mr-2"
+                                        tooltipPosition="bottom"></button>
+                                    <button type="button" pButton pRipple icon="pi pi-file-excel"
+                                        (click)="exportExcel()" class="p-button-success mr-2" pTooltip="XLS"
+                                        tooltipPosition="bottom"></button>
+                                    <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()"
+                                        class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <div class="col-sm-12 text-center align-middle">
+                                <h6 class="text-dark">Commissions Report</h6>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header" [ngClass]="{'header-accessories': 1 === 1}">
+                        <tr style="font-size: 12px;" [ngClass]="{'header-accessories': 1 === 1}">
+                            <th>Trans Id</th>
+                            <th style="text-align: right;">Amount</th>
+                            <th>Bank Commission</th>
+                            <th>Agent Commission</th>
+                            <th>Service Code</th>
+                            <th>Description</th>
+                            <th style="width: 180px;">Trans Date</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-customer let-rowIndex="rowIndex">
+                        <tr style="font-size: 12px;">
+                            <td>{{customer.id}}</td>
+                            <td style="text-align: right;">{{customer.amount | number}}</td>
+                            <td style="text-align: right;">{{customer.bankCommission | number}}</td>
+                            <td style="text-align: right;">{{customer.agentCommission | number}}</td>
+                            <td>{{customer.serviceCode}}</td>
+                            <td>{{customer.transDescr}}</td>
+                            <td style="width: 180px;">{{customer.systemDate}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-12  text-center">
+                <span style="color: blue;" *ngIf="isTableLoading"
+                    class="spinner-border spinner-border-sm mr-1 text-center"></span>
+            </div>
+        </div>
+        <br>
+        <div class="form-row form-group">
+            <div class="col-12 d-flex justify-content-end flex-sm-row flex-column mt-0 mt-sm-0">
+                <button type="button" class="btn btn-sm btn-danger mr-0 mb-1" [routerLink]="['/dashboard/dashboard1']">
+                    <i class='fa fa-close'></i>
+                    Close</button>
+            </div>
+        </div>
+    </form>
+</div>

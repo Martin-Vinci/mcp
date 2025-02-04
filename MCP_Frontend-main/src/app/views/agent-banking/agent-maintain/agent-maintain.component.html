@@ -1,0 +1,133 @@
+<p-panel header="Maintain Agent">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="col-sm-6">       
+                <div class="form-row">
+                    <div class="col-sm-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Agent Type</mat-label>
+                            <mat-select formControlName="acctType">
+                                <mat-option value="AGENT">Agent</mat-option>
+                                <mat-option value="SUPER_AGENT">Super Agent</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-8">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Agent Name</mat-label>
+                            <input matInput autocomplete="off" formControlName="customerName">
+                        </mat-form-field>
+                    </div>
+                </div>     
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Relationship Manager:</mat-label>
+                            <mat-select formControlName="rsmId">
+                                <mat-option></mat-option>
+                                <mat-option *ngFor="let item of usersList" [value]="item.employeeId">
+                                    {{item.fullName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>TIN #:</mat-label>
+                            <input matInput autocomplete="off" formControlName="tinNo">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Phone Number:</mat-label>
+                            <input matInput autocomplete="off" formControlName="phoneNumber">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Date of Incorporation:</mat-label>
+                            <input matInput autocomplete="off" type="date" formControlName="birthDate">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>ID Number:</mat-label>
+                            <input matInput autocomplete="off" formControlName="registrationNo">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Post office box</mat-label>
+                            <input matInput autocomplete="off" formControlName="postalAddress">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Physical Address</mat-label>
+                            <input matInput autocomplete="off" formControlName="physicalAddress">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 text-right">
+                        <button [disabled]="loading[0]" *ngIf="!isView" class="btn btn-primary btn-sm mr-1 mb-1" style="width: 90px;" (click)="onSubmit()">
+                            <span *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+                            <i class="fa fa-check  "></i> Save
+                        </button>
+                        <button [disabled]="loading[2]" *ngIf="!isView && isSuperAgent" class="btn btn-primary btn-sm mr-1 mb-1"
+                        (click)="onPinReset()">
+                        <span *ngIf="loading[2]" class="spinner-border spinner-border-sm mr-1"></span>
+                        <i class="fa fa-check  "></i> Reset Pin
+                    </button>
+                        <button class="btn btn-danger btn-sm mr-1 mb-1" type="button" style="width: 90px;"  type="button" (click)="onClose()">
+                            <i class="fa fa-times  "></i> Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">            
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        <p-table [value]="data" styleClass="p-datatable-sm mt-1 mb-2 ml-2 mr-2 prime-ng-table" responsiveLayout="scroll" [responsive]="true"
+                            selectionMode="single" [(selection)]="selectedAccount" dataKey="id" [loading]="loading[1]"
+                            responsiveLayout="scroll">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>Account #</th>
+                                    <th>Account Name</th>
+                                    <th>Type</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-selectedAccount>
+                                <tr [pSelectableRow]="selectedAccount">
+                                    <td>{{selectedAccount.acctNo}}</td>
+                                    <td>{{selectedAccount.description}}</td>                           
+                                    <td>{{selectedAccount.acctType}}</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    <div class="col-md-12 text-right">
+                        <button *ngIf="canAddAcct" type="button" class="btn btn-success btn-sm mr-2 mb-1" (click)="openAccountWindow('COMMISSION')">
+                            <i class="fa fa-check  "></i> Add Commission Account
+                        </button>
+                        <button *ngIf="isSuperAgent" type="button" class="btn btn-success btn-sm mr-2 mb-1" (click)="openAccountWindow('FLOAT_ACCOUNT')">
+                            <i class="fa fa-check  "></i> Add Transacting Account
+                        </button>
+                        <button *ngIf="isEdit && !isSuperAgent" class="btn btn-primary btn-sm mr-1 mb-1" (click)="onViewOutlets()">
+                            <i class="fa fa-eye"></i> View Outlets
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</p-panel>

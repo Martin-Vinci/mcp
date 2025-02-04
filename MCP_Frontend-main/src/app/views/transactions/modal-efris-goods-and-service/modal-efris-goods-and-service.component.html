@@ -1,0 +1,43 @@
+<form [formGroup]="form">
+    <div class="form-group form-row">
+        <div class="col-sm-12">
+            <p-table [value]="data" [paginator]="true" [rows]="50"
+                styleClass="p-datatable-sm mt-1 ml-2 mr-2 prime-ng-table" responsiveLayout="scroll"
+                [responsive]="true" selectionMode="single" [(selection)]="selectedData" dataKey="id"
+                [loading]="loading[0]" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr style="font-size: 12px;">
+                        <th>Commodity category</th>
+                        <th>My Product code</th>
+                        <th>Goods/Service name</th>
+                        <th>Unit Price</th>
+                        <th>Tax Rate</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-selectedData>
+                    <tr style="font-size: 12px;" [pSelectableRow]="selectedData">
+                        <td>{{selectedData.commodityCategoryName}}</td>
+                        <td>{{selectedData.goodsCode}}</td>
+                        <td>{{selectedData.goodsName}}</td>
+                        <td>{{selectedData.unitPrice}}</td>
+                        <td>{{selectedData.taxRate}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-12  text-center">
+            <span style="color: blue;" *ngIf="loading[0]"
+                class="spinner-border spinner-border-sm mr-1 text-center"></span>
+        </div>
+    </div>
+    <div class="form-row form-group">
+        <div class="offset-sm-3 col-sm-9  text-right">
+            <p-button label="Select" styleClass="p-button-success p-button-sm" icon="pi pi-check" (onClick)="submit()">
+            </p-button>
+            <p-button label="Close" styleClass="p-button-danger p-button-sm" icon="pi pi-times" (onClick)="cancel()">
+            </p-button>
+        </div>
+    </div>
+</form>

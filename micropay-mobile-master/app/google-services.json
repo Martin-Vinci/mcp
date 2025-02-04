@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "482451529040",
+    "firebase_url": "https://orbitlite-cf9a9.firebaseio.com",
+    "project_id": "orbitlite-cf9a9",
+    "storage_bucket": "orbitlite-cf9a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482451529040:android:d481a81a4cc72bd0",
+        "android_client_info": {
+          "package_name": "com.agentbanking.micropay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482451529040-ipmfvt711r672allucuvsjoekmd432or.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV2Ho-mL0w3Kt8VmP8F1eU0Ac1CWA2txY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

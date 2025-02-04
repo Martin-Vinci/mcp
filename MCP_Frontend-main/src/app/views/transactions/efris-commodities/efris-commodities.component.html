@@ -1,0 +1,56 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group form-row">
+        <div class="col-sm-12">
+            <label>Category 1:</label>
+            <select formControlName="commodityCategoryLevel1Code" class="form-control" (change)="queryCommodityCategoryByParentCode($event.target.value, 2)">
+                <option *ngFor="let item of level1CommodityList" value="{{item.commodityCategoryCode}}-{{item.commodityCategoryName}}">
+                    {{item.commodityCategoryCode}}-{{item.commodityCategoryName}}</option>
+            </select>
+            <span *ngIf="loading[1]" style="color: blue;" class="spinner-border spinner-border-sm mr-1"></span>
+        </div>
+    </div>
+    <div class="form-group form-row">
+        <div class="col-sm-12">
+            <label>Category 2:</label>
+            <select formControlName="commodityCategoryLevel2Code" class="form-control" (change)="queryCommodityCategoryByParentCode($event.target.value, 3)">
+                <option *ngFor="let item of level2CommodityList" value="{{item.commodityCategoryCode}}-{{item.commodityCategoryName}}">
+                    {{item.commodityCategoryCode}}-{{item.commodityCategoryName}}</option>
+            </select>
+            <span *ngIf="loading[2]" style="color: blue;" class="spinner-border spinner-border-sm mr-1"></span>
+        </div>
+    </div>
+    <div class="form-group form-row">
+        <div class="col-sm-12">
+            <label>Category 3:</label>
+            <select formControlName="commodityCategoryLevel3Code" class="form-control" (change)="queryCommodityCategoryByParentCode($event.target.value, 4)">
+                <option *ngFor="let item of level3CommodityList" value="{{item.commodityCategoryCode}}-{{item.commodityCategoryName}}">
+                    {{item.commodityCategoryCode}} - {{item.commodityCategoryName}}</option>
+            </select>
+            <span *ngIf="loading[3]" style="color: blue;" class="spinner-border spinner-border-sm mr-1"></span>
+        </div>
+    </div>
+    <div class="form-group form-row">
+        <div class="col-sm-12">
+            <label>Category 4:</label>
+            <select formControlName="commodityCategoryLevel4Code" class="form-control" (change)="queryCommodityCategoryByParentCode($event.target.value, 4)">
+                <option *ngFor="let item of level4CommodityList" value="{{item.commodityCategoryCode}}-{{item.commodityCategoryName}}">
+                    {{item.commodityCategoryCode}} - {{item.commodityCategoryName}}</option>
+            </select>
+            <span *ngIf="loading[4]" style="color: blue;" class="spinner-border spinner-border-sm mr-1"></span>
+        </div>
+    </div>
+    <div class="form-group form-row">
+        <div class="col-md-8 text-left">
+            <label class="required-error">{{errorMessage}}</label>
+        </div>
+        <div class="col-md-4 text-right">
+            <button [disabled]="loading[5]" type="submit" class="btn btn-primary btn-sm mr-1 mb-1"
+                style="width: 90px;">
+                <span *ngIf="loading[5]" class="spinner-border spinner-border-sm mr-1"></span>
+                <i class="fa fa-check  "></i> Save
+            </button>
+            <button type="button" class="btn btn-sm mr-1 mb-1 btn-danger mr-2 btn-border"
+            (click)="ref.close(false)">Close</button>
+        </div>
+    </div>
+</form>

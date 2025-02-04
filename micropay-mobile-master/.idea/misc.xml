@@ -1,0 +1,17 @@
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Paul/SITES/Micropay/micropay-mobile/micropay-agency-package/micropay-mobile-app/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Paul/SITES/Micropay/micropay-mobile/micropay-agency-package/micropay-mobile-app/app/src/main/res/layout/activity_settings.xml" value="0.25" />
+        <entry key="..\:/Paul/SITES/Micropay/micropay-mobile/micropay-agency-package/micropay-mobile-app/app/src/main/res/layout/f_txn_coporate_billpay_agent.xml" value="0.2" />
+        <entry key="..\:/Paul/SITES/Micropay/micropay-mobile/micropay-agency-package/micropay-mobile-app/app/src/main/res/layout/f_txn_go_tv_payment.xml" value="0.2" />
+        <entry key="..\:/Paul/SITES/Micropay/micropay-mobile/micropay-agency-package/micropay-mobile-app/app/src/main/res/layout/f_txn_gotv_payment_agent.xml" value="0.2" />
+        <entry key="..\:/Paul/SITES/Micropay/micropay-mobile/micropay-agency-package/micropay-mobile-app/app/src/main/res/layout/f_txn_mtn_mm_agent.xml" value="0.33" />
+        <entry key="..\:/Paul/SITES/Micropay/micropay-mobile/micropay-agency-package/micropay-mobile-app/app/src/main/res/layout/nav_header_nav.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK" />
+</project>

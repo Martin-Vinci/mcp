@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="projects">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/micropay-mobile-apis-master (1).zip!/" />
+      <root url="jar://$PROJECT_DIR$/MCP_Backend-master.zip!/" />
+      <root url="jar://$PROJECT_DIR$/micropay-mobile-master.zip!/" />
+      <root url="jar://$PROJECT_DIR$/MCP_Frontend-main.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

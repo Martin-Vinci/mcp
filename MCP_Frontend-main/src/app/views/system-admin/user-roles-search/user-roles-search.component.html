@@ -1,0 +1,50 @@
+<p-panel header="Billers">
+    <div class="form-row">
+        <div class="col-md-12 text-right">
+            <!-- <button class="btn btn-primary btn-sm mr-1 mb-1 " (click)="onEdit()">
+                <i class="fa fa-search"></i> Search
+            </button> -->
+            <button class="btn btn-warning btn-sm mr-1 mb-1 " (click)="onView()">
+                <i class="fa fa-eye"></i> View
+            </button>
+            <button class="btn btn-success btn-sm mr-1 mb-1 " (click)="onEdit()">
+                <i class="fa fa-pencil"></i> Edit
+            </button>
+            <button class="btn btn-primary btn-sm mr-1 mb-1 " (click)="onAdd()">
+                <i class="fa fa-plus"></i> Add
+            </button>
+            <button class="btn btn-danger btn-sm mr-1 mb-1 " routerLink="/dashboard/analytics">
+                <i class="fa fa-times  "></i> Close
+            </button>
+        </div>
+    </div>
+
+
+    <div class="form-group form-row">
+        <div class="col-sm-12">
+            <p-table [value]="data" [paginator]="true" [rows]="50"
+                styleClass="p-datatable-sm mt-1 ml-2 mr-2 prime-ng-table" responsiveLayout="scroll" [responsive]="true"
+                selectionMode="single" [(selection)]="selectedData" dataKey="userTypeId" [loading]="loading[0]"
+                responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr style="font-size: 12px;">
+                        <th>Description</th>
+                        <th>Create Date</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-selectedData>
+                    <tr style="font-size: 12px;" [pSelectableRow]="selectedData">
+                        <td>{{selectedData.description}}</td>
+                        <td>{{selectedData.createDt}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-12  text-center">
+            <span style="color: blue;" *ngIf="loading[0]"
+                class="spinner-border spinner-border-sm mr-1 text-center"></span>
+        </div>
+    </div>
+</p-panel>

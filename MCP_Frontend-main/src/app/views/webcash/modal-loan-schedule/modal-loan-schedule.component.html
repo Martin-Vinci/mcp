@@ -1,0 +1,57 @@
+<form>
+    <div class="form-row form-group">
+        <div class="col-md-12 text-right">
+            <button class="btn btn-primary btn-sm mr-1 mb-1 " (click)="exportExcel()">
+                <i class="fa fa-file-excel-o"></i>Export</button>
+            <button type="button" class="btn btn-danger btn-sm mr-1 mb-1 " (click)="cancel()">
+                <i class="fa fa-times  "></i> Close
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group form-row">
+        <div class="col-sm-12">
+            <p-table [value]="data" styleClass="p-datatable-sm mt-3" responsiveLayout="scroll"
+                [responsive]="true" selectionMode="single" [(selection)]="selectedData" dataKey="id"
+                responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr style="font-size: 13px;">
+                        <th>Schedule #</th>
+                        <th>Due Date</th>
+                        <th>Principal</th>
+                        <th>Interest</th>
+                        <th>Total Amount</th>
+                        <th>Amount Paid</th>
+                        <th>Amount Unpaid</th>
+                        <th>Status</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-selectedData>
+                    <tr style="font-size: 13px;" [pSelectableRow]="selectedData">
+                        <td style="width: 10px;">{{selectedData.scheduleNo}}</td>
+                        <td >{{selectedData.dueDate}}</td>
+                        <td class="text-right">{{selectedData.principalAmount | number: '.2'}}</td>
+                        <td class="text-right">{{selectedData.interestAmount | number: '.2'}}</td>
+                        <td class="text-right">{{selectedData.totalAmount | number: '.2'}}</td>
+                        <td class="text-right">{{selectedData.amountPaid | number: '.2'}}</td>
+                        <td class="text-right">{{selectedData.amountUnPaid | number: '.2'}}</td>
+                        <td>{{selectedData.status}}</td>
+                    </tr>
+                </ng-template>
+                <!-- <ng-template pTemplate="footer">
+                <tr>
+                    <td colspan="3" class="text-right">Totals</td>
+                    <td>{{principalAmount | currency: 'UGX'}}</td>
+                    <td>{{principalAmount | currency: 'UGX'}}</td>
+                </tr>
+            </ng-template> -->
+            </p-table>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-12  text-center">
+            <span style="color: blue;" *ngIf="loading[0]"
+                class="spinner-border spinner-border-sm mr-1 text-center"></span>
+        </div>
+    </div>
+</form>

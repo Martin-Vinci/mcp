@@ -1,0 +1,96 @@
+<form [formGroup]="form">
+    <div class="form-row">
+        <div class="col-sm-6">
+            <mat-form-field appearance="fill">
+                <mat-label style="font-size: 13px;">Narration</mat-label>
+                <input matInput readonly style="font-size: 13px; color: blue;" autocomplete="off" readonly formControlName="transDescr">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field appearance="fill">
+                <mat-label style="font-size: 13px;">Posted Flag</mat-label>
+                <input matInput readonly style="font-size: 13px; color: blue;" autocomplete="off" readonly formControlName="utilPosted">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field appearance="fill">
+                <mat-label style="font-size: 13px;">Reversal Flag</mat-label>
+                <input matInput readonly style="font-size: 13px; color: blue;" autocomplete="off" readonly formControlName="reversalFlag">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-6">
+            <mat-form-field appearance="fill">
+                <mat-label style="font-size: 13px;">Reversal Reason</mat-label>
+                <input matInput readonly style="font-size: 13px; color: blue;" autocomplete="off" readonly formControlName="reversalReason">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field appearance="fill">
+                <mat-label style="font-size: 13px;">Transaction Date</mat-label>
+                <input matInput readonly style="font-size: 13px; color: blue;" autocomplete="off" readonly formControlName="systemDate">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field appearance="fill">
+                <mat-label>Initiator PhoneNo</mat-label>
+                <input matInput readonly style="font-size: 13px; color: blue;" autocomplete="off" readonly formControlName="initiatorPhoneNo">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-6">
+            <mat-form-field appearance="fill">
+                <mat-label style="font-size: 13px;">Depositor's PhoneNo</mat-label>
+                <input matInput readonly style="font-size: 13px; color: blue;" autocomplete="off" readonly formControlName="depositorPhone">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field appearance="fill">
+                <mat-label  style="font-size: 13px;">Depositor's Name</mat-label>
+                <input matInput readonly style="font-size: 13px; color: blue;" autocomplete="off" readonly formControlName="depositorName">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field appearance="fill">
+                <mat-label style="font-size: 13px;">Originator UserCode</mat-label>
+                <input matInput readonly style="font-size: 13px; color: blue;" autocomplete="off" readonly formControlName="postedBy">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-group form-row">
+        <div class="col-sm-12">
+            <p-table [value]="data" styleClass="p-datatable-sm mt-1 ml-1 mr-1 prime-ng-table" responsiveLayout="scroll" [responsive]="true"
+                selectionMode="single" [(selection)]="selectedData" dataKey="id" [loading]="loading[0]"
+                responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr style="font-size: 12px;">
+                        <th>Trans #</th>
+                        <th>Source Account</th>
+                        <th>Destination Account</th>
+                        <th>Amount</th>
+                        <th>Trans Type</th>
+                        <th>Reversal Failure Message</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-selectedData>
+                    <tr style="font-size: 12px;" [pSelectableRow]="selectedData">
+                        <td>{{selectedData.itemNo}}</td>
+                        <td>{{selectedData.drAcctNo}}</td>
+                        <td>{{selectedData.crAcctNo}}</td>
+                        <td>{{selectedData.amount}}</td>
+                        <td>{{selectedData.transType}}</td>
+                        <td>{{selectedData.reversalMessage}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class=" col-12  text-right">
+            <button type="button" class="btn btn-sm mr-1 mb-1 btn-danger mr-2 btn-border"
+                (click)="cancel()">Close</button>
+        </div>
+    </div>
+</form>

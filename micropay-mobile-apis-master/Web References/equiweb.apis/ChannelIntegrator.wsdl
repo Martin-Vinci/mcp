@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bankequiweb.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bankequiweb.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bankequiweb.com/">
+      <s:element name="processServiceRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:ServiceRequestWrapper" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceRequestWrapper">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="authRequest" type="tns:AuthenticationWrapper" />
+          <s:element minOccurs="0" maxOccurs="1" name="requestBody" type="tns:ServiceRequestBody" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AuthenticationWrapper">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="channelCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="requestDigest" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="institutionId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="vCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="vPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="phoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServiceRequestBody">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="serviceCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="requestId" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="requestInput" type="tns:RequestInput" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RequestInput">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="inputItems" type="tns:InputItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InputItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="items" type="tns:ArrayOfItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:Item" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Item">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="processServiceRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="processServiceRequestResult" type="tns:ServiceResponseWrapper" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceResponseWrapper">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="responseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="requestOutput" type="tns:RequestOutput" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RequestOutput">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="outputParameters" type="tns:OutputItems" />
+          <s:element minOccurs="0" maxOccurs="1" name="transOutput" type="tns:ArrayOfStatementOutput" />
+          <s:element minOccurs="0" maxOccurs="1" name="outputParameterItems" type="tns:ArrayOfOutputItems" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OutputItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="exportItems" type="tns:ArrayOfItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfStatementOutput">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StatementOutput" nillable="true" type="tns:StatementOutput" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StatementOutput">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="transDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="transAmount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="closingBalance" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="debitCredit" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOutputItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OutputItems" nillable="true" type="tns:OutputItems" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="processServiceRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:processServiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="processServiceRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:processServiceRequestResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ChannelIntegratorSoap">
+    <wsdl:operation name="processServiceRequest">
+      <wsdl:input message="tns:processServiceRequestSoapIn" />
+      <wsdl:output message="tns:processServiceRequestSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ChannelIntegratorSoap" type="tns:ChannelIntegratorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="processServiceRequest">
+      <soap:operation soapAction="http://bankequiweb.com/processServiceRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ChannelIntegratorSoap12" type="tns:ChannelIntegratorSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="processServiceRequest">
+      <soap12:operation soapAction="http://bankequiweb.com/processServiceRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ChannelIntegrator">
+    <wsdl:port name="ChannelIntegratorSoap" binding="tns:ChannelIntegratorSoap">
+      <soap:address location="https://mb.micropay.co.ug:9010/equiweb-ci-uat/ChannelIntegrator.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ChannelIntegratorSoap12" binding="tns:ChannelIntegratorSoap12">
+      <soap12:address location="https://mb.micropay.co.ug:9010/equiweb-ci-uat/ChannelIntegrator.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

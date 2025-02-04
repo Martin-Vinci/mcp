@@ -1,0 +1,13 @@
+======================================================
+
+ALTER TABLE mcplive.service_ref ADD service_category varchar(10) NULL;
+
+UPDATE mcplive.service_ref set service_category = 'CUSTOMER' where service_code in (70002,70005,70007,70009,70011,70013,70018,70026,70028,
+70035,70039,70047,70049,70051,70055,70061,70063);
+
+update mcplive.service_ref set service_category = 'AGENT' where service_code not in (70002,70005,70007,70009,70011,70013,70018,70026,70028,
+70035,70039,70047,70049,70051,70055,70061,70063);
+
+ALTER TABLE mcplive.service_ref ALTER COLUMN service_category SET NOT NULL;
+
+======================================================

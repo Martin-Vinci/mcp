@@ -1,0 +1,197 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/iconTextColor"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto"
+            android:textSize="17dp"
+            android:text="My Account(s) *"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/my_account"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:textSize="17dp"
+            android:backgroundTint="@android:color/black"
+            android:padding="0dp"
+            android:spinnerMode="dialog"></Spinner>
+
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto"
+            android:textSize="17dp"
+            android:text="Request Type *"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/paymentType"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:textSize="17dp"
+            android:backgroundTint="@android:color/black"
+            android:padding="0dp"
+            android:spinnerMode="dialog"></Spinner>
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/roboto"
+            android:textSize="17dp"
+            android:text="Meter/Ref Number"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/referenceNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:textSize="17dp"
+            android:hint="Meter/Ref Number"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/lbl_customer_details"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/roboto"
+            android:textSize="17dp"
+            android:visibility="gone"
+            android:text="Customer details"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:id="@+id/linear_customer_details"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lbl_customer_name"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:textSize="17dp"
+                android:textColor="#00008B"
+                android:text="Customer Name"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/lbl_umeme_charge"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:textSize="17dp"
+                android:textColor="#0000FF"
+                android:text="Pending Charge"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <View
+            android:id="@+id/details_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="3dp"
+            android:visibility="gone"
+            android:background="@android:color/darker_gray" />
+        <TextView
+            android:id="@+id/lbl_trans_amount"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/roboto"
+            android:textSize="17dp"
+            android:visibility="gone"
+            android:text="Transaction Amount *"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tran_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:textSize="17dp"
+            android:hint="Transaction Amount *"
+            android:visibility="gone"
+            android:inputType="phone" />
+
+        <TextView
+            android:id="@+id/lbl_customer_phone"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/roboto"
+            android:textSize="17dp"
+            android:visibility="gone"
+            android:text="Phone number"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/customer_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:textSize="17dp"
+            android:hint="Phone number"
+            android:visibility="gone"
+            android:inputType="phone" />
+
+        <Button
+            android:id="@+id/process_umeme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/card_white"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:imeOptions="actionDone|actionSend"
+            android:text="Validate"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

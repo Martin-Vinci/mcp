@@ -1,0 +1,29 @@
+export class Charge {
+    id: number;
+    chargeCode: string;
+    description: string;
+    chargeType: string;
+    calculationBasis: string;
+    flatAmount: number;
+    depositLoan: string;
+    currencyId: number;
+    maxAmount: number;
+    minAmount: number;
+    minMaxBasis: string;
+    waiveCharge: string;
+    freeItemsPerDay: number;
+    gracePeriodDays: number;
+    graceDaysStartOption: string;
+    startDate: Date;
+    endDate: Date;
+    exemptionBalanceType: string;
+    exemptionBalanceLimit: number;
+    glAcctNo: string;
+    status: string;
+    uuid: string;
+    createdBy: string;
+    createDate: Date;
+    modifiedBy: string;
+    modifyDate: Date;
+    edit: boolean;
+}

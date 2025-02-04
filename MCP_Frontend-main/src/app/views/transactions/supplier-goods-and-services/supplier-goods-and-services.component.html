@@ -1,0 +1,72 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+                <mat-label>Goods/Service Name</mat-label>
+                <input matInput readonly autocomplete="off" formControlName="item">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+                <mat-label>My Product Code</mat-label>
+                <input matInput readonly autocomplete="off" formControlName="itemCode">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+                <mat-label>Commodity Category</mat-label>
+                <input matInput readonly autocomplete="off" required formControlName="categoryName">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <label>Package Measure Unit:</label>
+            <select formControlName="unitOfMeasure" class="form-control">
+                <option *ngFor="let item of dictionaryData.rateUnit" value="{{item.value}}">
+                    {{item.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+                <mat-label>Unit Price(Tax Inclusive)</mat-label>
+                <input matInput type="number" autocomplete="off" required (keyup)="onUnitPriceChanged()"
+                    formControlName="unitPrice">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+                <mat-label>Quantity</mat-label>
+                <input matInput type="number" autocomplete="off" (keyup)="onUnitPriceChanged()" required
+                    formControlName="qty">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+                <mat-label>Total(Tax Inclusive)</mat-label>
+                <input matInput type="number" autocomplete="off" required formControlName="total">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+                <mat-label>VAT Rate</mat-label>
+                <input matInput type="number" autocomplete="off" required formControlName="taxRate">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-8 text-left">
+            <label class="required-error">{{errorMessage}}</label>
+        </div>
+        <div class="col-md-4 text-right">
+            <button [disabled]="loading" type="submit" class="btn btn-primary btn-sm mr-1 mb-1" style="width: 90px;">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                <i class="fa fa-check  "></i> Save
+            </button>
+        </div>
+    </div>
+</form>

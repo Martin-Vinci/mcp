@@ -1,0 +1,46 @@
+<p-panel header="Repayment History">
+    <div class="form-row form-group">
+        <div class="col-md-12 text-right">
+            <button class="btn btn-primary btn-sm mr-1 mb-1 " (click)="exportExcel()">
+                <i class="fa fa-file-excel-o"></i>Export</button>
+            <button class="btn btn-primary btn-sm mr-1 mb-1 " (click)="onAdd()">
+                <i class="fa fa-plus"></i> Add
+            </button>
+            <button class="btn btn-danger btn-sm mr-1 mb-1 " routerLink="/dashboard/analytics">
+                <i class="fa fa-times  "></i> Close
+            </button>
+        </div>
+    </div>
+    <div class="form-row form-group">
+        <div class="col-12">
+            <p-table [value]="data" [paginator]="true" [rows]="50" styleClass="p-datatable-sm mt-1 prime-ng-table"
+                responsiveLayout="scroll" [responsive]="true" selectionMode="single" [(selection)]="selectedData"
+                dataKey="transId" [loading]="loading[0]" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr style="font-size: 12px;">
+                        <th>ID #</th>
+                        <th>Loan Account</th>
+                        <th>Reference</th>
+                        <th>Trans Amount</th>
+                        <th>Charge Amount</th>
+                        <th>Channel Code</th>
+                        <th>Description</th>
+                        <th>Trans Date</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-selectedData>
+                    <tr style="font-size: 12px;" [pSelectableRow]="selectedData">
+                        <td>{{selectedData.transId}}</td>
+                        <td>{{selectedData.acctNo}}</td>
+                        <td>{{selectedData.txnRef}}</td>
+                        <td>{{selectedData.transAmount | number: '.2'}}</td>
+                        <td>{{selectedData.chargeAmount | number: '.2'}}</td>
+                        <td>{{selectedData.channelCode}}</td>
+                        <td>{{selectedData.transDescr}}</td>
+                        <td>{{selectedData.transDate | date}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</p-panel>

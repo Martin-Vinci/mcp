@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:background="@color/colorPrimary">
+    <TextView
+        android:id="@+id/text_view1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="Trans Date"
+        android:gravity="left"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/card_white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/text_view2"
+        android:layout_width="80dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/text_view1"
+        android:text="Trans Amount"
+        android:gravity="right"
+        android:textColor="@color/card_white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/text_view3"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/text_view2"
+        android:text="Narration"
+        android:gravity="left"
+        android:textColor="@color/card_white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/text_view4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@id/text_view3"
+        android:text="Balance"
+        android:gravity="right"
+        android:textColor="@color/card_white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+</RelativeLayout>

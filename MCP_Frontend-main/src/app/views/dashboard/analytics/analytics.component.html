@@ -1,0 +1,135 @@
+<div ngxUiLoaderBlurred>
+<div class="mat-bg-primary mx--050 mt--0100 px-5 pt-10 pb-96">
+</div>
+<div class="mt--72 px-24 pt-24 pb-96">
+  <div fxLayout="row wrap">
+    <div fxFlex="100" fxFlex.sm="100" fxFlex.gt-sm="100">
+      <div fxLayout="row wrap">
+        <div *ngFor="let item of statCardList" fxFlex="100" fxFlex.sm="25" fxFlex.gt-sm="25">
+          <mat-card class="p-24" fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <mat-icon class="text-30 mat-color-{{item.color}}">{{
+                item.icon
+                }}</mat-icon>
+              <div class="ml-8">
+                <p style="font-size: 12px;" class="m-0 text-muted mb-2">{{ item.title }}</p>
+                <h5 class="m-0 mat-color-{{item.color}}">{{ item.amount | number: '.0' }}</h5>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+      <br>
+      <div fxLayout="form-group form-row">
+        <div class="col-4 text-center">
+          <h6>Outlet Float Status</h6>
+          <div style="width: 80%; height: 80%;">
+            <div fxFlexFill>
+              <span style="color: blue;" *ngIf="loading[0]" class="spinner-border spinner-border-sm mr-1"></span>
+              <canvas *ngIf="!loading[0]" baseChart [data]="floatStatusChartValues" (chartClick)="onFloatStatusClicked($event, 'OUTLET_FLOAT_STATUS')" [labels]="floatStatusChartLabels" [chartType]="pieChartType"
+                [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+              </canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <h6>Customer Balances</h6>
+          <div style="width: 80%; height: 80%;">
+            <div fxFlexFill>
+              <span style="color: blue;" *ngIf="loading[1]" class="spinner-border spinner-border-sm mr-1"></span>
+              <canvas baseChart *ngIf="!loading[1]" [data]="customerBalanceChartValues" (chartClick)="onFloatStatusClicked($event, 'CUSTOMER_BALANCE')" [labels]="customerBalanceChartLabels" [chartType]="pieChartType"
+                [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+              </canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <h6>Active Customers</h6>
+          <div style="width: 80%; height: 80%;">
+            <div fxFlexFill>
+              <span style="color: blue;" *ngIf="loading[2]" class="spinner-border spinner-border-sm mr-1"></span>
+              <canvas baseChart *ngIf="!loading[2]" [data]="activeCustomerChartValues" (chartClick)="onFloatStatusClicked($event, 'ACTIVE_CUSTOMERS')" [labels]="activeCustomerChartLabels" [chartType]="pieChartType"
+                [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div fxLayout="row">
+        <div class="col-6">
+          <div fxFlex="100">
+            <legend>
+              <h6>Active Agents - Today</h6>
+            </legend>
+            <div class="mat-elevation-z0" style="width: 100%;">
+              <table mat-table [dataSource]="todayDatasource" style="width: 100%;">
+                <!-- Position Column -->
+                <ng-container matColumnDef="outletNo">
+                  <th mat-header-cell *matHeaderCellDef> Outlet Code </th>
+                  <td mat-cell style="font-size: 11px;" *matCellDef="let element"> {{element.outletNo}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="outletName">
+                  <th mat-header-cell *matHeaderCellDef> Outlet Name </th>
+                  <td mat-cell style="font-size: 11px;" *matCellDef="let element"> {{element.outletName}} </td>
+                </ng-container>
+                <ng-container matColumnDef="transCount">
+                  <th mat-header-cell *matHeaderCellDef class="table-money-class" style="font-weight: bold;">Trans
+                    Count</th>
+                  <td mat-cell style="font-size: 11px;" *matCellDef="let element" class="table-money-class">
+                    {{element.transCount | number: '.0'}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"
+                  style="font-weight: bold; height: 40px;"></tr>
+                <tr mat-row class="table-mat-row" *matRowDef="let row; columns: displayedColumns;"
+                  (click)="getSelectedRow(row)"
+                  [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+                  (mouseover)="row.hovered = true" (mouseout)="row.hovered = false">
+                </tr>
+              </table>
+
+              <mat-paginator [pageSizeOptions]="[20]"></mat-paginator>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <legend>
+            <h6>Active Agents - Current Month</h6>
+          </legend>
+          <div class="mat-elevation-z0">
+            <table mat-table [dataSource]="monthDatasource" style="width: 100%;">
+              <!-- Position Column -->
+              <ng-container matColumnDef="outletNo">
+                <th mat-header-cell *matHeaderCellDef> Outlet Code </th>
+                <td mat-cell style="font-size: 11px;" *matCellDef="let element"> {{element.outletNo}} </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="outletName">
+                <th mat-header-cell *matHeaderCellDef> Outlet Name </th>
+                <td mat-cell style="font-size: 11px;" *matCellDef="let element"> {{element.outletName}} </td>
+              </ng-container>
+              <ng-container matColumnDef="transCount">
+                <th mat-header-cell *matHeaderCellDef class="table-money-class" style="font-weight: bold;">Trans
+                  Count</th>
+                <td mat-cell style="font-size: 11px;" *matCellDef="let element" class="table-money-class">
+                  {{element.transCount | number: '.0'}} </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"
+                style="font-weight: bold; height: 40px;"></tr>
+              <tr mat-row class="table-mat-row" *matRowDef="let row; columns: displayedColumns;"
+                (click)="getSelectedRow(row)" [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+                (mouseover)="row.hovered = true" (mouseout)="row.hovered = false">
+              </tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[20]"></mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

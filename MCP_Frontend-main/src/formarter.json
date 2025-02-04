@@ -1,0 +1,67 @@
+{
+    "code": "00",
+    "message": "approved",
+    "data": {
+        "transId": 46104,
+        "chargeAmt": 575.0000,
+        "drAcctBalance": null,
+        "crAcctBalance": null,
+        "cbsTransId": null,
+        "transDetails": [
+            {
+                "destAcctNo": "3100000002",
+                "transAmt": 8500.0,
+                "sourceAcctNo": "2700000407",
+                "description": "TRANS_AMOUNT-256777659896=>Pay UMEME => 14333261031 : SSALI MULUMBA MATHIAS",
+                "amountType": "TRANS_AMOUNT",
+                "transType": "P2P",
+                "cbsTransId": null
+            },
+            {
+                "destAcctNo": "01-01-00-1990302",
+                "transAmt": 500.00,
+                "sourceAcctNo": "2700000407",
+                "description": "CHARGE-256777659896=>Pay UMEME => 14333261031 : SSALI MULUMBA MATHIAS",
+                "amountType": "CHARGE",
+                "transType": "DP2GL",
+                "cbsTransId": null
+            },
+            {
+                "destAcctNo": "01-01-00-2100404",
+                "transAmt": 75.0000,
+                "sourceAcctNo": "2700000407",
+                "description": "EXCISE_DUTY-256777659896=>Pay UMEME => 14333261031 : SSALI MULUMBA MATHIAS",
+                "amountType": "EXCISE_DUTY",
+                "transType": "DP2GL",
+                "cbsTransId": null
+            },
+            {
+                "destAcctNo": "2300000274",
+                "transAmt": 200.00,
+                "sourceAcctNo": "01-01-00-1990302",
+                "description": "AGENT_COMMISSION-256777659896=>Pay UMEME => 14333261031 : SSALI MULUMBA MATHIAS",
+                "amountType": "AGENT_COMMISSION",
+                "transType": "GL2DP",
+                "cbsTransId": null
+            },
+            {
+                "destAcctNo": "01-01-00-2100403",
+                "transAmt": 12.0000,
+                "sourceAcctNo": "2300000274",
+                "description": "WITHHOLD_TAX-256777659896=>Pay UMEME => 14333261031 : SSALI MULUMBA MATHIAS",
+                "amountType": "WITHHOLD_TAX",
+                "transType": "DP2GL",
+                "cbsTransId": null
+            },
+            {
+                "destAcctNo": "01-01-00-4050406",
+                "transAmt": 300.00,
+                "sourceAcctNo": "01-01-00-1990302",
+                "description": "NET_CHARGE-256777659896=>Pay UMEME => 14333261031 : SSALI MULUMBA MATHIAS",
+                "amountType": "NET_CHARGE",
+                "transType": "GL2GL",
+                "cbsTransId": null
+            }
+        ]
+    }
+}

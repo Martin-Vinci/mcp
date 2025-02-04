@@ -1,0 +1,85 @@
+<p-panel header="Loan Account Details">
+    <form [formGroup]="form">
+        <div *ngIf="customerName" class="form-group form-row">
+            <div class="col-md-2">
+                <label style="font-size: 13px;">First Name.</label>
+            </div>
+            <div class="col-md-3">
+                <label style="font-size: 13px; color: blue;">{{customer.firstName}}</label>
+            </div>
+            <div class="col-md-2">
+                <label style="font-size: 13px;">Last Name.</label>
+            </div>
+            <div class="col-md-3">
+                <label style="font-size: 13px; color: blue;">{{customer.lastName}}</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Loan Amount.</mat-label>
+                    <input matInput readonly inputmode="numeric" autocomplete="off" formControlName="approvedAmount">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline" appDateFormat>
+                    <mat-label>Start date</mat-label>
+                    <input matInput readonly formControlName="startDate" [matDatepicker]="startDatePicker">
+                    <mat-datepicker #startDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Term</mat-label>
+                    <input matInput readonly inputmode="numeric" autocomplete="off" formControlName="term">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Frequency</mat-label>
+                    <mat-select readonly required formControlName="repayPeriod">
+                        <mat-option value="DAY">DAY</mat-option>
+                        <mat-option value="WEEK">WEEK</mat-option>
+                        <mat-option value="MONTH">MONTH</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field readonly appearance="outline">
+                    <mat-label>End date</mat-label>
+                    <input readonly matInput formControlName="endDate" [matDatepicker]="endDateDatePicker">
+                    <mat-datepicker readonly #endDateDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Status</mat-label>
+                    <input readonly matInput autocomplete="off" formControlName="status">
+                </mat-form-field>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="row form-group">
+                <div class="col-md-12 text-right">
+                    <button style="width: 80px;" (click)="onGetSchedules()"
+                        class="btn mr-1 mb-1 btn-primary btn-sm btn-border" type="button">
+                        Schedules
+                    </button>
+                    <button *ngIf="enableDisburse" [disabled]="loading" style="width: 80px;" (click)="disburseLoan()"
+                        class="btn mr-1 mb-1 btn-success btn-sm btn-border" type="button">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Disburse
+                    </button>
+                    <button style="width: 80px;" (click)="onClose()" class="btn mr-1 mb-1  btn-danger btn-sm btn-border"
+                        type="button">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</p-panel>

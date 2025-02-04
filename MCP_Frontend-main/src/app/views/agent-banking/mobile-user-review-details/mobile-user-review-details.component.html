@@ -1,0 +1,114 @@
+<form [formGroup]="form">
+    <div class="form-row ml-2 mr-2">
+        <div class="col-sm-3">
+            <div class="form-row form-group">
+                <div class="col-md-12 text-center">
+                    <label style="size: 9px;">Customer Photo</label>
+                    <img class="border border-light"
+                        style="border: solid; border-width: 1px; width: 130px; height: 150px;"
+                        [src]="photoImage" />
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-md-12 text-center">
+                    <label style="size: 9px;">Customer Signature</label>
+                    <img class="border border-light"
+                        style="border: solid; border-width: 1px; width: 130px; height: 150px;"
+                        [src]="signatureImage" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <mat-label>First Name:</mat-label>
+                        <input matInput readonly autocomplete="off" formControlName="firstName">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <mat-label>Last Name:</mat-label>
+                        <input matInput readonly autocomplete="off" formControlName="surName">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <mat-label>Birth Date:</mat-label>
+                        <input matInput readonly autocomplete="off" formControlName="dateOfBirth">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <mat-label>Town:</mat-label>
+                        <input matInput readonly autocomplete="off" formControlName="town">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <mat-label>ID Number:</mat-label>
+                        <input matInput readonly autocomplete="off" formControlName="idNumber">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <mat-label>Mobile Phone:</mat-label>
+                        <input matInput readonly autocomplete="off" formControlName="mobilePhone">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <mat-label>ID Issue Date:</mat-label>
+                        <input matInput readonly autocomplete="off" formControlName="idIssueDt">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <mat-label>ID Expiry Date:</mat-label>
+                        <input matInput readonly autocomplete="off" formControlName="idExpiryDate">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <mat-label>Gender:</mat-label>
+                        <input matInput readonly autocomplete="off" formControlName="gender">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <mat-label>Agent No:</mat-label>
+                        <input matInput readonly autocomplete="off" formControlName="outletNo">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <mat-label>Next Of Kin:</mat-label>
+                        <input matInput readonly autocomplete="off" formControlName="nokName">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <mat-label>Next Of Kin Mobile:</mat-label>
+                        <input matInput readonly autocomplete="off" formControlName="nokPhone">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="form-row">
+        <div class=" col-12  text-right">
+            <button type="button" class="btn btn-sm mr-1 mb-1 btn-danger mr-2 btn-border"
+                (click)="cancel()">Close</button>
+        </div>
+    </div>
+</form>
